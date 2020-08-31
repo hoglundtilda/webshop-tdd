@@ -9,11 +9,10 @@
 //6. Testa att summan av alla produkter stämmer
 
 //Products
-//1. Skall rendera ut antal produkter som finns i jsonfil eller backend
-//2. Testa att när du klickar på en sko skall den öppna detaljerad sida för den skon
+//1. Skall rendera ut antal produkter som finns i jsonfil eller backend  ( tilda products.spec.js)
+//2. Testa att när du klickar på en sko skall den öppna detaljerad sida för den skon (tilda products.spec.js)
 
 //Searchfield
-
 //1. Sökfältet skall vara "" vid rendering
 //2. Testa att input filtrerar skorna korrekt
 //3.
@@ -24,8 +23,8 @@
 
 //1. i dropdowns för storlek och pris behöver vi kolla att det är vad man valt
 
-//1. kolla att alla komponenter existerar och renderas
+//1. kolla att alla komponenter existerar och renderas (tilda gjort för home view)
 
 //2.
 
-//3. kolla så rätt route visas när man byter view
+//3. kolla så rätt route visas när man byter view (tilda gjort i routes.spec.js... tror jag ska funka)

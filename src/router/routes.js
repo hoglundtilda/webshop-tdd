@@ -1,8 +1,8 @@
-import Home from "@/views/Home";
-export default routes = [
+import Home from '@/views/Home';
+export default [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Home,
   },
 ];
