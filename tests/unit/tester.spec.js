@@ -23,3 +23,11 @@
 //ShoeDetailView
 1. Behöver testa att det går att lägga till produkt i varukorgen
 2. Behöver kolla att den lägger till vald storlek
+
+1. i dropdowns för storlek och pris behöver vi kolla att det är vad man valt
+
+1. kolla att alla komponenter existerar och renderas
+
+2.
+
+3. kolla så rätt route visas när man byter view
