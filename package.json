@@ -1,49 +1,50 @@
 {
-  "name": "webshop-tdd",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
-  },
-  "description": "```\r https://trello.com/b/Dec8km2l/grupprojekt-webshop\r https://docs.google.com/document/d/1ztaK_IKcf1_lQkF4ZaX22iOQqivN1emotMRyzGWg6Io/edit?ts=5f4c978e\r https://www.figma.com/file/IJexuNo1k0LaIKcmwtmBIB/Grupprojekt%3A-Webshop?node-id=0%3A1\r ```",
-  "main": "babel.config.js",
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jensengbg-matilda-hoglund/webshop-tdd.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jensengbg-matilda-hoglund/webshop-tdd/issues"
-  },
-  "homepage": "https://github.com/jensengbg-matilda-hoglund/webshop-tdd#readme"
+    "name": "webshop-tdd",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "test:unit": "vue-cli-service test:unit"
+    },
+    "dependencies": {
+        "core-js": "^3.6.5",
+        "jest": "^26.4.2",
+        "vue": "^2.6.11",
+        "vue-router": "^3.2.0",
+        "vuex": "^3.4.0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-plugin-unit-jest": "~4.5.0",
+        "@vue/cli-plugin-vuex": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "@vue/test-utils": "^1.0.3",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ],
+    "jest": {
+        "preset": "@vue/cli-plugin-unit-jest"
+    },
+    "description": "```\r https://trello.com/b/Dec8km2l/grupprojekt-webshop\r https://docs.google.com/document/d/1ztaK_IKcf1_lQkF4ZaX22iOQqivN1emotMRyzGWg6Io/edit?ts=5f4c978e\r https://www.figma.com/file/IJexuNo1k0LaIKcmwtmBIB/Grupprojekt%3A-Webshop?node-id=0%3A1\r ```",
+    "main": "babel.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jensengbg-matilda-hoglund/webshop-tdd.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jensengbg-matilda-hoglund/webshop-tdd/issues"
+    },
+    "homepage": "https://github.com/jensengbg-matilda-hoglund/webshop-tdd#readme"
 }
