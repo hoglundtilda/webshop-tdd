@@ -1,376 +1,375 @@
 {
-  "products": [
-    {
-      "id": "0001",
-      "brand": "adidas Originals",
-      "name": "NMD R1",
-      "type": "Sneakers",
-      "price": "1 395,00",
-      "color": "Black",
-      "material": {
-        "Yttermaterial": "Konstmaterial/textil",
-        "Foder": "Textil",
-        "Innersula": "Textil",
-        "Sula": "Konstmaterial",
-        "Fodertjocklek": "Tunt foder"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/Sula": "Platt",
-        "Förslutning": "Snörning",
-        "Mönster": "Enfärgat",
-        "Artikelnummer": "AD115O0OM-G11"
-      },
-      "sizes": [
-        { "size": "36", "stock": "2" },
-        { "size": "37", "stock": "1" },
-        { "size": "38", "stock": "1" },
-        { "size": "39", "stock": "0" },
-        { "size": "40", "stock": "2" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "0" },
-        { "size": "43", "stock": "3" },
-        { "size": "44", "stock": "1" }
-      ],
-      "images": [
-        "adidas_original/adidas_original_1.png",
-        "adidas_original/adidas_original_2.png",
-        "adidas_original/adidas_original_3.png"
-      ]
-    },
-    {
-      "id": "0002",
-      "brand": "DKNY",
-      "name": "ABBI RUNNER",
-      "type": "Slip-ins",
-      "price": "1 395,00",
-      "color": "Black/White",
-      "material": {
-        "Yttermaterial": "Textil",
-        "Foder": "Textil",
-        "Innersula": "Skinnimitation",
-        "Sula": "Konstmaterial",
-        "Fodertjocklek": "Tunt foder"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/Sula": "Genomgående platå",
-        "Förslutning": "Öppen",
-        "Mönster": "Tryck",
-        "Tillbehör": "Dragläpp vid hälen",
-        "Yttersula": "Anti-halk, profilerad",
-        "Innersula": "Polstrad",
-        "Artikelnummer": "ZZLSSM070-Q11"
-      },
-      "sizes": [
-        { "size": "38", "stock": "1" },
-        { "size": "39", "stock": "3" },
-        { "size": "40", "stock": "2" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "0" },
-        { "size": "43", "stock": "0" },
-        { "size": "44", "stock": "1" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "dkny/dkny_abbi_runner_1.png",
-        "dkny/dkny_abbi_runner_2.png",
-        "dkny/dkny_abbi_runner_3.png"
-      ]
-    },
-    {
-      "id": "0003",
-      "brand": "Fila",
-      "name": "ORBIT ZEPPA",
-      "type": "Sneakers",
-      "price": "879,00",
-      "color": "Black",
-      "material": {
-        "Yttermaterial": "Skinn och textil",
-        "Foder": "Textil",
-        "Innersula": "Skinnimitation",
-        "Sula": "Konstmaterial",
-        "Fodertjocklek": "Tunt foder"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/Sula": "Genomgående platå",
-        "Förslutning": "Snörning",
-        "Mönster": "Enfärgat",
-        "Artikelnummer": "1FI11A005-Q11"
-      },
-      "sizes": [
-        { "size": "38", "stock": "0" },
-        { "size": "39", "stock": "0" },
-        { "size": "40", "stock": "2" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "0" },
-        { "size": "43", "stock": "0" },
-        { "size": "44", "stock": "0" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "fila/fila_orbit_zeppa_1.png",
-        "fila/fila_orbit_zeppa_2.png",
-        "fila/fila_orbit_zeppa_3.png"
-      ]
-    },
-    {
-      "id": "0004",
-      "brand": "Iceberg",
-      "name": "KAKKOI",
-      "type": "Höga sneakers",
-      "price": "4 495,00",
-      "color": "Multicolor",
-      "material": {
-        "Yttermaterial": "Skinn och textil",
-        "Foder": "Textil",
-        "Innersula": "Skinnimitation",
-        "Sula": "Slittåligt gummi",
-        "Fodertjocklek": "Tunt foder",
-        "Skötselråd": "Impregnera skorna innan du använder dem"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Förslutning": "Elastisk snörning",
-        "Artikelnummer": "IC312N002-T11"
-      },
-      "sizes": [
-        { "size": "38", "stock": "1" },
-        { "size": "39", "stock": "2" },
-        { "size": "40", "stock": "2" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" },
-        { "size": "43", "stock": "3" },
-        { "size": "44", "stock": "4" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "iceberg/kakkoi/iceberg_kakkoi_1.png",
-        "iceberg/kakkoi/iceberg_kakkoi_2.png",
-        "iceberg/kakkoi/iceberg_kakkoi_3.png"
-      ]
-    },
-    {
-      "id": "0005",
-      "brand": "Jordan",
-      "name": "AIR 1 SE",
-      "type": "Sneakers",
-      "price": "1 195,00",
-      "color": "white/hyper royal/university red/pine green",
-      "material": {
-        "Yttermaterial": "Förstklassig skinnimitation",
-        "Foder": "Textil",
-        "Innersula": "Skinnimitation",
-        "Sula": "Slittåligt gummi",
-        "Fodertjocklek": "Tunt foder"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/sula": "Platt",
-        "Förslutning": "Snörning",
-        "Mönster": "Flergfärgat",
-        "Detaljer": "Cut-outs, med ett extra par skosnören",
-        "Artikelnummer": "JOC11A01Q-T11"
-      },
-      "sizes": [
-        { "size": "38", "stock": "0" },
-        { "size": "39", "stock": "2" },
-        { "size": "40", "stock": "2" },
-        { "size": "41", "stock": "2" },
-        { "size": "42", "stock": "1" },
-        { "size": "43", "stock": "0" },
-        { "size": "44", "stock": "2" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "joardans/joardans_air_1.png",
-        "joardans/joardans_air_2.png",
-        "joardans/joardans_air_3.png"
-      ]
-    },
-    {
-      "id": "0006",
-      "brand": "Nike Sportswear",
-      "name": "AIR MAX PLUS III UNISEX",
-      "type": "Sneakers",
-      "price": "1 795,00",
-      "color": "white/black/chile red",
-      "material": {
-        "Yttermaterial": "Förstklassig skinnimitation",
-        "Foder": "Textil",
-        "Innersula": "Skinnimitation",
-        "Sula": "Slittåligt gummi",
-        "Fodertjocklek": "Tunt foder",
-        "Tyg": "Skinnimitation"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/sula": "Platt",
-        "Förslutning": "Snörning",
-        "Artikelnummer": "NI112O0FH-A11"
-      },
-      "sizes": [
-        { "size": "37", "stock": "1" },
-        { "size": "38", "stock": "2" },
-        { "size": "39", "stock": "2" },
-        { "size": "40", "stock": "3" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" },
-        { "size": "43", "stock": "0" },
-        { "size": "44", "stock": "0" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "nike_air_max/nike_air_max_1.png",
-        "nike_air_max/nike_air_max_2.png",
-        "nike_air_max/nike_air_max_3.png"
-      ]
-    },
-    {
-      "id": "0007",
-      "brand": "Nike Performance",
-      "name": "ADAPT",
-      "type": "Indoorskor",
-      "price": "3 749,00",
-      "color": "white/wolf grey/bright crimson/black",
-      "material": {
-        "Yttermaterial": "Textil",
-        "Foder": "Textil",
-        "Innersula": "Textil",
-        "Sula": "Konstmaterial"
-      },
-      "productinfo": {
-        "Sport": "Basket",
-        "Artikelnummer": "N1242A24Q-A11"
-      },
-      "sizes": [
-        { "size": "38", "stock": "1" },
-        { "size": "39", "stock": "0" },
-        { "size": "40", "stock": "3" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" },
-        { "size": "43", "stock": "3" },
-        { "size": "44", "stock": "0" },
-        { "size": "45", "stock": "1" }
-      ],
-      "images": [
-        "nike_performance/nike_performance_adapt_1.png",
-        "nike_performance/nike_performance_adapt_2.png",
-        "nike_performance/nike_performance_adapt_3.png"
-      ]
-    },
-    {
-      "id": "0008",
-      "brand": "Nike Sportwear",
-      "name": "ZOOM 2K",
-      "type": "Sneakers",
-      "price": "969,00",
-      "color": "platinum tint/hyper crimson/white/black",
-      "material": {
-        "Yttermaterial": "Skinn och textil",
-        "Foder": "Textil",
-        "Innersula": "Textil",
-        "Sula": "Konstmaterial",
-        "Tyg": "Mesh"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/sula": "Platt",
-        "Förslutning": "Snörning",
-        "Mönster": "Tryck",
-        "Artikelnummer": "NI111A0D1-A15"
-      },
-      "sizes": [
-        { "size": "35", "stock": "2" },
-        { "size": "36", "stock": "1" },
-        { "size": "37", "stock": "0" },
-        { "size": "38", "stock": "2" },
-        { "size": "39", "stock": "1" },
-        { "size": "40", "stock": "0" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" }
-      ],
-      "images": [
-        "nike_zoom2k/nike_zoom2k_1.png",
-        "nike_zoom2k/nike_zoom2k_2.png",
-        "nike_zoom2k/nike_zoom2k_3.png"
-      ]
-    },
-    {
-      "id": "0009",
-      "brand": "Steve Madden",
-      "name": "MATCH",
-      "type": "Sneakers",
-      "price": "979,00",
-      "color": "olive/multicolor",
-      "material": {
-        "Yttermaterial": "Konstmaterial/textil",
-        "Foder": "Textil",
-        "Innersula": "Textil",
-        "Sula": "Konstmaterial",
-        "Tyg": "Stickat"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/sula": "Platt",
-        "Förslutning": "Elastisk snörning",
-        "Mönster": "Enfärgat",
-        "Artikelnummer": "ST311A06X-N11"
-      },
-      "sizes": [
-        { "size": "35", "stock": "1" },
-        { "size": "36", "stock": "0" },
-        { "size": "37", "stock": "2" },
-        { "size": "38", "stock": "2" },
-        { "size": "39", "stock": "1" },
-        { "size": "40", "stock": "1" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" }
-      ],
-      "images": [
-        "steve_madden/steve_madden_match_1.png",
-        "steve_madden/steve_madden_match_2.png",
-        "steve_madden/steve_madden_match_3.png"
-      ]
-    },
-    {
-      "id": "0010",
-      "brand": "Vans",
-      "name": "UA OLD SKOOL",
-      "type": "Sneakers",
-      "price": "849,00",
-      "color": "black/white",
-      "material": {
-        "Yttermaterial": "Skinn och textil",
-        "Foder": "Skinnimitation/textil",
-        "Innersula": "Textil",
-        "Sula": "Konstmaterial",
-        "Tyg": "Canvas"
-      },
-      "productinfo": {
-        "Tå": "Rund",
-        "Klack/sula": "Platt",
-        "Förslutning": "Snörning",
-        "Detalj": "Dekorsömmar",
-        "Stängning": "Snörning",
-        "Artikelnummer": "VA211S03A-Q11"
-      },
-      "sizes": [
-        { "size": "35", "stock": "1" },
-        { "size": "36", "stock": "0" },
-        { "size": "37", "stock": "2" },
-        { "size": "38", "stock": "2" },
-        { "size": "39", "stock": "1" },
-        { "size": "40", "stock": "1" },
-        { "size": "41", "stock": "1" },
-        { "size": "42", "stock": "1" }
-      ],
-      "images": [
-        "vans/vans_old_skool_1.png",
-        "vans/vans_old_skool_2.png",
-        "vans/vans_old_skool.png"
-      ]
-    }
-  ]
+    "products": [{
+            "id": "0001",
+            "brand": "Adidas Originals",
+            "name": "NMD R1",
+            "type": "Sneakers",
+            "price": "1 395,00",
+            "color": "Black",
+            "material": {
+                "Yttermaterial": "Konstmaterial/textil",
+                "Foder": "Textil",
+                "Innersula": "Textil",
+                "Sula": "Konstmaterial",
+                "Fodertjocklek": "Tunt foder"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/Sula": "Platt",
+                "Förslutning": "Snörning",
+                "Mönster": "Enfärgat",
+                "Artikelnummer": "AD115O0OM-G11"
+            },
+            "sizes": [
+                { "size": "36", "stock": "2" },
+                { "size": "37", "stock": "1" },
+                { "size": "38", "stock": "1" },
+                { "size": "39", "stock": "0" },
+                { "size": "40", "stock": "2" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "0" },
+                { "size": "43", "stock": "3" },
+                { "size": "44", "stock": "1" }
+            ],
+            "images": [
+                "adidas_original/adidas_original_1.png",
+                "adidas_original/adidas_original_2.png",
+                "adidas_original/adidas_original_3.png"
+            ]
+        },
+        {
+            "id": "0002",
+            "brand": "DKNY",
+            "name": "ABBI RUNNER",
+            "type": "Slip-ins",
+            "price": "1 395,00",
+            "color": "Black/White",
+            "material": {
+                "Yttermaterial": "Textil",
+                "Foder": "Textil",
+                "Innersula": "Skinnimitation",
+                "Sula": "Konstmaterial",
+                "Fodertjocklek": "Tunt foder"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/Sula": "Genomgående platå",
+                "Förslutning": "Öppen",
+                "Mönster": "Tryck",
+                "Tillbehör": "Dragläpp vid hälen",
+                "Yttersula": "Anti-halk, profilerad",
+                "Innersula": "Polstrad",
+                "Artikelnummer": "ZZLSSM070-Q11"
+            },
+            "sizes": [
+                { "size": "38", "stock": "1" },
+                { "size": "39", "stock": "3" },
+                { "size": "40", "stock": "2" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "0" },
+                { "size": "43", "stock": "0" },
+                { "size": "44", "stock": "1" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "dkny/dkny_abbi_runner_1.png",
+                "dkny/dkny_abbi_runner_2.png",
+                "dkny/dkny_abbi_runner_3.png"
+            ]
+        },
+        {
+            "id": "0003",
+            "brand": "Fila",
+            "name": "ORBIT ZEPPA",
+            "type": "Sneakers",
+            "price": "879,00",
+            "color": "Black",
+            "material": {
+                "Yttermaterial": "Skinn och textil",
+                "Foder": "Textil",
+                "Innersula": "Skinnimitation",
+                "Sula": "Konstmaterial",
+                "Fodertjocklek": "Tunt foder"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/Sula": "Genomgående platå",
+                "Förslutning": "Snörning",
+                "Mönster": "Enfärgat",
+                "Artikelnummer": "1FI11A005-Q11"
+            },
+            "sizes": [
+                { "size": "38", "stock": "0" },
+                { "size": "39", "stock": "0" },
+                { "size": "40", "stock": "2" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "0" },
+                { "size": "43", "stock": "0" },
+                { "size": "44", "stock": "0" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "fila/fila_orbit_zeppa_1.png",
+                "fila/fila_orbit_zeppa_2.png",
+                "fila/fila_orbit_zeppa_3.png"
+            ]
+        },
+        {
+            "id": "0004",
+            "brand": "Iceberg",
+            "name": "KAKKOI",
+            "type": "Höga sneakers",
+            "price": "4 495,00",
+            "color": "Multicolor",
+            "material": {
+                "Yttermaterial": "Skinn och textil",
+                "Foder": "Textil",
+                "Innersula": "Skinnimitation",
+                "Sula": "Slittåligt gummi",
+                "Fodertjocklek": "Tunt foder",
+                "Skötselråd": "Impregnera skorna innan du använder dem"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Förslutning": "Elastisk snörning",
+                "Artikelnummer": "IC312N002-T11"
+            },
+            "sizes": [
+                { "size": "38", "stock": "1" },
+                { "size": "39", "stock": "2" },
+                { "size": "40", "stock": "2" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" },
+                { "size": "43", "stock": "3" },
+                { "size": "44", "stock": "4" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "iceberg_kakkoi/iceberg_kakkoi_1.png",
+                "iceberg_kakkoi/iceberg_kakkoi_2.png",
+                "iceberg_kakkoi/iceberg_kakkoi_3.png"
+            ]
+        },
+        {
+            "id": "0005",
+            "brand": "Jordan",
+            "name": "AIR 1 SE",
+            "type": "Sneakers",
+            "price": "1 195,00",
+            "color": "white/hyper royal/university red/pine green",
+            "material": {
+                "Yttermaterial": "Förstklassig skinnimitation",
+                "Foder": "Textil",
+                "Innersula": "Skinnimitation",
+                "Sula": "Slittåligt gummi",
+                "Fodertjocklek": "Tunt foder"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/sula": "Platt",
+                "Förslutning": "Snörning",
+                "Mönster": "Flergfärgat",
+                "Detaljer": "Cut-outs, med ett extra par skosnören",
+                "Artikelnummer": "JOC11A01Q-T11"
+            },
+            "sizes": [
+                { "size": "38", "stock": "0" },
+                { "size": "39", "stock": "2" },
+                { "size": "40", "stock": "2" },
+                { "size": "41", "stock": "2" },
+                { "size": "42", "stock": "1" },
+                { "size": "43", "stock": "0" },
+                { "size": "44", "stock": "2" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "jordans/jordans_air_1.png",
+                "jordans/jordans_air_2.png",
+                "jordans/jordans_air_3.png"
+            ]
+        },
+        {
+            "id": "0006",
+            "brand": "Nike Sportswear",
+            "name": "AIR MAX PLUS III UNISEX",
+            "type": "Sneakers",
+            "price": "1 795,00",
+            "color": "white/black/chile red",
+            "material": {
+                "Yttermaterial": "Förstklassig skinnimitation",
+                "Foder": "Textil",
+                "Innersula": "Skinnimitation",
+                "Sula": "Slittåligt gummi",
+                "Fodertjocklek": "Tunt foder",
+                "Tyg": "Skinnimitation"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/sula": "Platt",
+                "Förslutning": "Snörning",
+                "Artikelnummer": "NI112O0FH-A11"
+            },
+            "sizes": [
+                { "size": "37", "stock": "1" },
+                { "size": "38", "stock": "2" },
+                { "size": "39", "stock": "2" },
+                { "size": "40", "stock": "3" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" },
+                { "size": "43", "stock": "0" },
+                { "size": "44", "stock": "0" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "nike_air_max/nike_air_max_1.png",
+                "nike_air_max/nike_air_max_2.png",
+                "nike_air_max/nike_air_max_3.png"
+            ]
+        },
+        {
+            "id": "0007",
+            "brand": "Nike Performance",
+            "name": "ADAPT",
+            "type": "Indoorskor",
+            "price": "3 749,00",
+            "color": "white/wolf grey/bright crimson/black",
+            "material": {
+                "Yttermaterial": "Textil",
+                "Foder": "Textil",
+                "Innersula": "Textil",
+                "Sula": "Konstmaterial"
+            },
+            "productinfo": {
+                "Sport": "Basket",
+                "Artikelnummer": "N1242A24Q-A11"
+            },
+            "sizes": [
+                { "size": "38", "stock": "1" },
+                { "size": "39", "stock": "0" },
+                { "size": "40", "stock": "3" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" },
+                { "size": "43", "stock": "3" },
+                { "size": "44", "stock": "0" },
+                { "size": "45", "stock": "1" }
+            ],
+            "images": [
+                "nike_performance/nike_performance_adapt_1.png",
+                "nike_performance/nike_performance_adapt_2.png",
+                "nike_performance/nike_performance_adapt_3.png"
+            ]
+        },
+        {
+            "id": "0008",
+            "brand": "Nike Sportwear",
+            "name": "ZOOM 2K",
+            "type": "Sneakers",
+            "price": "969,00",
+            "color": "platinum tint/hyper crimson/white/black",
+            "material": {
+                "Yttermaterial": "Skinn och textil",
+                "Foder": "Textil",
+                "Innersula": "Textil",
+                "Sula": "Konstmaterial",
+                "Tyg": "Mesh"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/sula": "Platt",
+                "Förslutning": "Snörning",
+                "Mönster": "Tryck",
+                "Artikelnummer": "NI111A0D1-A15"
+            },
+            "sizes": [
+                { "size": "35", "stock": "2" },
+                { "size": "36", "stock": "1" },
+                { "size": "37", "stock": "0" },
+                { "size": "38", "stock": "2" },
+                { "size": "39", "stock": "1" },
+                { "size": "40", "stock": "0" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" }
+            ],
+            "images": [
+                "nike_zoom2k/nike_zoom2k_1.png",
+                "nike_zoom2k/nike_zoom2k_2.png",
+                "nike_zoom2k/nike_zoom2k_3.png"
+            ]
+        },
+        {
+            "id": "0009",
+            "brand": "Steve Madden",
+            "name": "MATCH",
+            "type": "Sneakers",
+            "price": "979,00",
+            "color": "olive/multicolor",
+            "material": {
+                "Yttermaterial": "Konstmaterial/textil",
+                "Foder": "Textil",
+                "Innersula": "Textil",
+                "Sula": "Konstmaterial",
+                "Tyg": "Stickat"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/sula": "Platt",
+                "Förslutning": "Elastisk snörning",
+                "Mönster": "Enfärgat",
+                "Artikelnummer": "ST311A06X-N11"
+            },
+            "sizes": [
+                { "size": "35", "stock": "1" },
+                { "size": "36", "stock": "0" },
+                { "size": "37", "stock": "2" },
+                { "size": "38", "stock": "2" },
+                { "size": "39", "stock": "1" },
+                { "size": "40", "stock": "1" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" }
+            ],
+            "images": [
+                "steve_madden/steve_madden_match_1.png",
+                "steve_madden/steve_madden_match_2.png",
+                "steve_madden/steve_madden_match_3.png"
+            ]
+        },
+        {
+            "id": "0010",
+            "brand": "Vans",
+            "name": "UA OLD SKOOL",
+            "type": "Sneakers",
+            "price": "849,00",
+            "color": "black/white",
+            "material": {
+                "Yttermaterial": "Skinn och textil",
+                "Foder": "Skinnimitation/textil",
+                "Innersula": "Textil",
+                "Sula": "Konstmaterial",
+                "Tyg": "Canvas"
+            },
+            "productinfo": {
+                "Tå": "Rund",
+                "Klack/sula": "Platt",
+                "Förslutning": "Snörning",
+                "Detalj": "Dekorsömmar",
+                "Stängning": "Snörning",
+                "Artikelnummer": "VA211S03A-Q11"
+            },
+            "sizes": [
+                { "size": "35", "stock": "1" },
+                { "size": "36", "stock": "0" },
+                { "size": "37", "stock": "2" },
+                { "size": "38", "stock": "2" },
+                { "size": "39", "stock": "1" },
+                { "size": "40", "stock": "1" },
+                { "size": "41", "stock": "1" },
+                { "size": "42", "stock": "1" }
+            ],
+            "images": [
+                "vans/vans_old_skool_1.png",
+                "vans/vans_old_skool_2.png",
+                "vans/vans_old_skool.png"
+            ]
+        }
+    ]
 }
