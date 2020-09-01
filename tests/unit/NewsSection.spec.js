@@ -6,10 +6,14 @@ describe("NewsSection", () => {
   beforeEach(() => {
     wrapper = shallowMount(NewsSection);
   });
-  test("Check so the component is being rendered", () => {
+  test("Check if the component exists", () => {
     let expected = true;
     const newsSection = wrapper.findComponent(NewsSection);
     expect(newsSection.exists()).toBe(expected);
   });
-  
+  test("Should check there is 4 articles inside the component", () => {
+    let article = wrapper.find("article");
+    let expectedLength = 4;
+    expect(article.length === expectedLength);
+  });
 });
