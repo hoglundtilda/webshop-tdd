@@ -12,19 +12,19 @@ describe("Footer", () => {
     const footer = wrapper.findComponent(Footer);
     expect(footer.exists()).toBe(expected);
   });
-  test("Should not have empty text value ", () => {
+  test("Should not have empty text value in links ", () => {
     let links = wrapper.findAll("a");
     for (let i = 0; i < links.length; i++) {
       expect(links.at(i).text()).not.toBe(null);
     }
   });
-  test("Should not have empty href value", () => {
+  test("Should not have empty href value in links", () => {
     let links = wrapper.findAll("a");
     for (let i = 0; i < links.length; i++) {
       expect(links.at(i).element.href).not.toBe("http://localhost/" || "");
     }
   });
-  test("Should check for correct value in href for Socil media links", () => {
+  test("Should check for correct value in href for Social media links", () => {
     let links = wrapper.findAll("a");
     for (let i = 0; i < links.length; i++) {
       expect(links.at(0).element.href).toBe("https://www.twitter.com/");
