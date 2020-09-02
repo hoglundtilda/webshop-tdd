@@ -36,18 +36,4 @@ describe("Products.vue", () => {
 
         expect(actual).toBe(expected);
     });
-
-    //Testar att du kommer till sidan ShoeInfo när du klickar på en sko
-    it("Renders ShoeInfo view via routing", async() => {
-        const router = new VueRouter({ routes }),
-            wrapper = mount(App, {
-                localVue,
-                router,
-            });
-
-        router.push("/ShoeInfo/");
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.findComponent(ShoeInfo).exists()).toBe(true);
-    });
 });
