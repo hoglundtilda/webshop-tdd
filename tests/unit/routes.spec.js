@@ -1,4 +1,4 @@
-import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import App from '@/App.vue';
@@ -6,7 +6,6 @@ import routes from '@/router/routes.js';
 import ShoeInfo from '@/views/ShoeInfo.vue';
 import Home from '@/views/Home.vue';
 import Cart from '@/views/Cart.vue';
-import CartButton from '@/components/CartButton.vue';
 // TESTA ATT RÄTT VIEWS RENDERAS FÖR ROUTER LINKS
 
 // https://lmiller1990.github.io/vue-testing-handbook/vue-router.html#creating-the-router-and-routes
@@ -15,12 +14,6 @@ import CartButton from '@/components/CartButton.vue';
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 localVue.use(Vuex);
-
-/* const store = new Vuex.Store({
-  state: {
-    cartItems: 1,
-  },
-}); */
 
 describe('App.vue', () => {
   let store;
