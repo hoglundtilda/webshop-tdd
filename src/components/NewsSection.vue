@@ -24,7 +24,7 @@ export default {};
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .news_section {
-  min-height: 500px;
+  min-height: 300px;
   display: grid;
   grid-template-columns: 20% 20% 20% 40%;
 }
@@ -95,7 +95,7 @@ p {
 
 .whoweare_info {
   background-color: transparent;
-  margin-bottom: 3rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-size: .8rem;
 }
 </style>
