@@ -3,10 +3,10 @@
     <FilterSearch />
     <ul class="productUl">
       <li
-        v-for="(product, index) in products.products"
+        v-for="(product, index) in products"
         :key="index"
         @click="showShoe(index)"
-        class="productList"
+        class="product"
       >
         <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
         <p class="productPrice">{{ product.price }} kr</p>
@@ -23,13 +23,23 @@ import FilterSearch from "./FilterSearch.vue";
 import json from "@/assets/products.json";
 export default {
   data: () => {
-    return { products: json };
+    return {
+      filteredProducts: [],
+    };
   },
   components: { FilterSearch },
+  computed: {
+    products() {
+      if (this.$store.state.setFilter.hasFilter === false)
+        return this.$store.state.setFilter.products;
+
+      if (this.$store.state.setFilter.hasFilter === true)
+        return this.$store.state.setFilter.filteredProducts;
+    },
+  },
   methods: {
     showShoe(index) {
       let shoe = this.products.products[index];
-      console.log(shoe);
       this.$router.push("/ShoeInfo/" + shoe.id);
     },
   },
@@ -44,7 +54,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.productList {
+.product {
   display: flex;
   flex-direction: column;
   width: 14rem;
