@@ -3,8 +3,7 @@ import Nav from '@/components/Nav.vue';
 import CartButton from '@/components/CartButton.vue';
 import Vuex from 'vuex';
 
-const localVue = createLocalVue();
-localVue.use(Vuex);
+const localVue = createLocalVue().use(Vuex);
 
 const store = new Vuex.Store({
   state: {
