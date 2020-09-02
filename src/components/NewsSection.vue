@@ -31,6 +31,7 @@ export default {};
 }
 
 .newssection_info_1 {
+  font-weight: 900;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +45,7 @@ export default {};
 
 .newssection_info_2 {
   display: flex;
+  font-weight: 900;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -56,6 +58,7 @@ export default {};
 
 .newssection_info_3 {
   display: flex;
+  font-weight: 900;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -69,6 +72,7 @@ export default {};
 
 .newssection_info_4 {
   display: flex;
+  font-weight: 900;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -92,11 +96,12 @@ p {
   background-color: transparent;
   font-size: 2rem;
   margin-top: 1rem;
+  font-weight: 900;
 }
 
 .whoweare_info {
   background-color: transparent;
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
 }
 </style>
