@@ -1,5 +1,6 @@
 
-import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
+
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import App from '@/App.vue';
@@ -17,12 +18,6 @@ import CartButton from '@/components/CartButton.vue';
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 localVue.use(Vuex);
-
-/* const store = new Vuex.Store({
-  state: {
-    cartItems: 1,
-  },
-}); */
 
 describe('App.vue', () => {
   let store;

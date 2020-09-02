@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="dropdown">
-      <select name="" id="" class="size">
+      <select name id="group_size" class="size">
         <option value="Size">Size</option>
         <option value="35">35</option>
         <option value="36">36</option>
@@ -15,7 +15,7 @@
         <option value="44">44</option>
         <option value="45">45</option>
       </select>
-      <select name="" id="" class="name">
+      <select name id="group_price" class="price" @change="filterPrice($event)" v-model="key">
         <option value="Price">Price</option>
         <option value="300-499">300-499</option>
         <option value="500-699">500-699</option>
@@ -23,17 +23,36 @@
         <option value="900-1099">900-1099</option>
         <option value="1100-1299">1100-1299</option>
         <option value="1300-1499">1300-1499</option>
-        <option value="5000">1500+</option>
+        <option value="1500-10000">1500+</option>
       </select>
     </section>
     <div class="searchfieled">
-      <input type="text" class="input" /><i class="fas fa-search"></i>
+      <input type="text" class="input" />
+      <i class="fas fa-search"></i>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => {
+    return {
+      key: "",
+    };
+  },
+  methods: {
+    filterPrice(event) {
+      if (event.target.value === "Price") {
+        this.$store.state.setFilter.noPriceFilter = event.target.value;
+      } else {
+        const splitPrice = event.target.value.split("-");
+        this.$store.state.setFilter.minPrice = splitPrice[0];
+        this.$store.state.setFilter.maxPrice = splitPrice[1];
+      }
+      this.$store.dispatch("filterPrice");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +72,7 @@ body {
   margin: 0 1rem;
 }
 .size,
-.name {
+.price {
   width: 6rem;
 }
 .searchfieled {
