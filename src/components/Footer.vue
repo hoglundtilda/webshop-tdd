@@ -63,7 +63,7 @@ export default {};
 
 .information {
   color: $white;
-  padding: 2rem 2rem;
+  padding: 2rem 10rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
