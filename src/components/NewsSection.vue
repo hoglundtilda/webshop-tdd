@@ -8,9 +8,10 @@
     </article>
     <article class="newssection_info_3">
       <p class="whoweare">Varför oss?</p>
-      <p
-        class="whoweare_info"
-      >Vi ser till att du är både snygg och torr om fötterna. Dessutom till ett bra pris</p>
+      <p class="whoweare_info">
+        Vi ser till att du är både snygg och torr om fötterna. Dessutom till ett
+        bra pris
+      </p>
     </article>
     <article class="newssection_info_4">
       <p>Hos oss finns det skor för alla</p>
@@ -24,12 +25,13 @@ export default {};
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .news_section {
-  min-height: 300px;
+  min-height: 50vh;
   display: grid;
   grid-template-columns: 20% 20% 20% 40%;
 }
 
 .newssection_info_1 {
+  font-weight: 900;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +45,7 @@ export default {};
 
 .newssection_info_2 {
   display: flex;
+  font-weight: 900;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -55,6 +58,7 @@ export default {};
 
 .newssection_info_3 {
   display: flex;
+  font-weight: 900;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -68,6 +72,7 @@ export default {};
 
 .newssection_info_4 {
   display: flex;
+  font-weight: 900;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -91,11 +96,12 @@ p {
   background-color: transparent;
   font-size: 2rem;
   margin-top: 1rem;
+  font-weight: 900;
 }
 
 .whoweare_info {
   background-color: transparent;
-  margin-bottom: 1rem;
-  font-size: .8rem;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
 }
 </style>

@@ -64,7 +64,8 @@ body {
   display: flex;
   justify-content: space-around;
   border-bottom: 2px solid rgb(230, 228, 228);
-  height: 2em;
+  height: 3em;
+  margin: 1rem 0rem;
 }
 
 .size {
@@ -85,6 +86,6 @@ body {
 .fa-search {
   position: absolute;
   right: 0.1rem;
-  bottom: 0.8rem;
+  bottom: 1.7rem;
 }
 </style>

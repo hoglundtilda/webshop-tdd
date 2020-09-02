@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <FilterSearch />
+
     <ul class="productUl">
       <li
         v-for="(product, index) in products"
@@ -8,11 +9,15 @@
         @click="showShoe(index)"
         class="product"
       >
-        <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
+        <img
+          :src="require(`../assets/img/${product.images[0]}`)"
+          alt
+          class="shoeImg"
+        />
         <p class="productPrice">{{ product.price }} kr</p>
 
         <p class="productBrand">{{ product.brand }} -</p>
-        <p class="productName">{{ product.name }}</p>
+        <p class="productModel">{{ product.name }}</p>
       </li>
     </ul>
   </div>
@@ -40,7 +45,8 @@ export default {
   methods: {
     showShoe(index) {
       let shoe = this.products.products[index];
-      this.$router.push("/ShoeInfo/" + shoe.id);
+      console.log(shoe);
+      this.$router.push("/shoeinfo/" + shoe.id);
     },
   },
 };
@@ -52,6 +58,8 @@ export default {
 .productUl {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
 .product {
@@ -71,7 +79,7 @@ export default {
 
 .productPrice,
 .productBrand,
-.productName {
+.productModel {
   padding: 0.2rem 1rem;
   margin: 0;
 }
