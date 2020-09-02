@@ -44,6 +44,7 @@ export default {
 
 .checkout_section {
   display: flex;
+  margin-bottom: 20rem;
   gap: 1rem;
   justify-content: center;
   flex-direction: row;

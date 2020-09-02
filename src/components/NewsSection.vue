@@ -8,9 +8,10 @@
     </article>
     <article class="newssection_info_3">
       <p class="whoweare">Varför oss?</p>
-      <p
-        class="whoweare_info"
-      >Vi ser till att du är både snygg och torr om fötterna. Dessutom till ett bra pris</p>
+      <p class="whoweare_info">
+        Vi ser till att du är både snygg och torr om fötterna. Dessutom till ett
+        bra pris
+      </p>
     </article>
     <article class="newssection_info_4">
       <p>Hos oss finns det skor för alla</p>
@@ -24,7 +25,7 @@ export default {};
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .news_section {
-  min-height: 300px;
+  min-height: 50vh;
   display: grid;
   grid-template-columns: 20% 20% 20% 40%;
 }
@@ -96,6 +97,6 @@ p {
 .whoweare_info {
   background-color: transparent;
   margin-bottom: 1rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 </style>
