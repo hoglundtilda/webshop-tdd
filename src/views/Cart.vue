@@ -36,6 +36,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100vw;
   height: 100vh;
   background-image: url("../assets/img/shoes-cart.jpg");
   background-repeat: no-repeat;
@@ -45,7 +46,7 @@ export default {
 .checkout_section {
   display: flex;
   margin-bottom: 20rem;
-  gap: 1rem;
+  gap: 3rem;
   justify-content: center;
   flex-direction: row;
 }

@@ -1,10 +1,22 @@
 <template>
   <section class="checkout">
-    <h3>Totalsumma:</h3>
-    <p>Varukorg:</p>
-    <p>Frakt:</p>
+    <div>
+      <h3 class="total_title">Totalsumma:</h3>
+      <p>4234:-</p>
+    </div>
+    <div>
+      <p>Varukorg:</p>
+      <p>4739:-</p>
+    </div>
+    <div>
+      <p>Frakt:</p>
+      <p>69:-</p>
+    </div>
     <div class="divider"></div>
-    <p>Total (inkl moms):</p>
+    <div>
+      <p>Total (inkl moms):</p>
+      <p>5019:-</p>
+    </div>
     <button class="checkout_button">VIDARE TILL BETALNING</button>
   </section>
 </template>
@@ -18,7 +30,7 @@ export default {};
 .checkout {
   padding: 1rem;
   height: auto;
-  width: 300px;
+  min-width: 400px;
   background-color: $white;
 }
 
@@ -34,8 +46,19 @@ export default {};
   margin-top: 1rem;
   background-color: $dark;
   color: $white;
-  padding: 0.3rem;
+  padding: 1rem 0rem;
   border: none;
   outline: none;
+}
+
+.total_title {
+  font-weight: 900;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
