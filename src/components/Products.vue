@@ -8,11 +8,7 @@
         @click="showShoe(index)"
         class="productList"
       >
-        <img
-          :src="require(`../assets/img/${product.images[0]}`)"
-          alt
-          class="shoeImg"
-        />
+        <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
         <p class="productPrice">{{ product.price }} kr</p>
 
         <p class="productBrand">{{ product.brand }} -</p>
@@ -31,8 +27,10 @@ export default {
   },
   components: { FilterSearch },
   methods: {
-    showShoe(id) {
-      this.$router.push("/ShoeInfo/");
+    showShoe(index) {
+      let shoe = this.products.products[index];
+      console.log(shoe);
+      this.$router.push("/ShoeInfo/" + shoe.id);
     },
   },
 };
