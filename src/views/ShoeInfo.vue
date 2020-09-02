@@ -31,7 +31,7 @@
         <h3>{{ shoe.price }} kr <span class="moms">inkl moms</span></h3>
         <h5>Färg: {{ shoe.color }}</h5>
         <select name="sizes" id="" class="sizes">
-          <option value="" hidden>Välj storlek</option>
+          <option value="" hidden>VÄLJ STORLEK</option>
           <option
             :value="option.size"
             v-for="(option, index) in shoe.sizes"
@@ -40,7 +40,25 @@
             >Storlek: {{ option.size }}, Antal i lager: {{ option.stock }}
           </option>
         </select>
-        <button class="addToCart">Lägg i varukorgen</button>
+        <button class="addToCart">LÄGG I VARUKORGEN</button>
+        <section class="goodToKnow">
+          <div class="material">
+            <h4>Material & skötsel</h4>
+            <p>Yttermaterial: {{ shoe.material.Yttermaterial }}</p>
+            <p>Foder: {{ shoe.material.Foder }}</p>
+            <p>Innersula: {{ shoe.material.Innersula }}</p>
+            <p>Sula: {{ shoe.material.Sula }}</p>
+            <p>Fodertjocklek: {{ shoe.material.Fodertjocklek }}</p>
+          </div>
+          <div class="productInformation">
+            <h4>Produktinformation</h4>
+            <p>Tå: {{ shoe.productinfo.Tå }}</p>
+            <p>Klack/Sula: {{ shoe.productinfo.Klack }}</p>
+            <p>Förslutning: {{ shoe.productinfo.Förslutning }}</p>
+            <p>Mönster: {{ shoe.productinfo.Mönster }}</p>
+            <p>Artikelnummer: {{ shoe.productinfo.Artikelnummer }}</p>
+          </div>
+        </section>
       </section>
     </section>
   </div>
@@ -62,7 +80,7 @@ export default {
 
   methods: {
     back() {
-      this.$router.push("/");
+      this.$router.go(-1);
     },
   },
 };
@@ -114,10 +132,30 @@ h3 {
   height: 3rem;
   font-size: 1rem;
   width: 13rem;
+  text-align-last: center;
+  cursor: pointer;
 }
-.options {
+
+.addToCart {
+  width: 13rem;
+  height: 3rem;
+  font-size: 1rem;
+  margin-left: 2rem;
+  background-color: #152222;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: ease;
+  transition-duration: 0.2s;
+}
+.addToCart:active {
+  transform: scale(1.02);
+}
+.goodToKnow {
   display: flex;
-  flex-direction: row;
+  width: 35rem;
   justify-content: space-between;
+  margin-top: 5rem;
 }
 </style>
