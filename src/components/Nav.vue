@@ -1,6 +1,13 @@
 <template>
   <div class="nav">
-    <CartButton />
+    <ul>
+      <p>Om</p>
+      <p>Nyhter</p>
+      <p>Kollektion</p>
+      <p>Rea</p>
+    </ul>
+
+    <CartButton class="cart_button" />
   </div>
 </template>
 
@@ -10,3 +17,26 @@ export default {
   components: { CartButton },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "@/assets/scss/variables";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  ul {
+    display: flex;
+
+    p {
+      margin: 1.5em;
+      color: $white;
+    }
+  }
+
+  .cart_button {
+    margin: 1em;
+  }
+}
+</style>
