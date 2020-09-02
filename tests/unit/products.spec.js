@@ -45,7 +45,7 @@ describe("Products.vue", () => {
                 router,
             });
 
-        router.push("/shoeinfo/");
+        router.push("/ShoeInfo/");
         await wrapper.vm.$nextTick();
 
         expect(wrapper.findComponent(ShoeInfo).exists()).toBe(true);

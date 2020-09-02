@@ -2,14 +2,18 @@
   <div class="wrapper">
     <section class="heading">
       <i class="fas fa-arrow-left fa-3x" @click="back"></i>
-      <img src="@/assets/img/carticon_dark.png" alt="" class="cartIcon" />
+      <img src="@/assets/img/carticon_dark.png" alt class="cartIcon" />
     </section>
   </div>
 </template>
 
 <script>
+import json from "@/assets/products.json";
 export default {
   name: "ShoeInfo",
+  data: () => {
+    return { products: json };
+  },
 
   methods: {
     back() {

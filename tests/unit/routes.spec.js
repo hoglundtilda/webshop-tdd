@@ -15,43 +15,43 @@ const localVue = createLocalVue();
 localVue.use(VueRouter);
 
 // HOME
-it('Renders Home view via routing', async () => {
-  const router = new VueRouter({ routes }),
-    wrapper = mount(App, {
-      localVue,
-      router,
-    });
+it('Renders Home view via routing', async() => {
+    const router = new VueRouter({ routes }),
+        wrapper = mount(App, {
+            localVue,
+            router,
+        });
 
-  router.push('/'); // Ska vi ha id eller liknande efter också?
-  await wrapper.vm.$nextTick();
+    router.push('/'); // Ska vi ha id eller liknande efter också?
+    await wrapper.vm.$nextTick();
 
-  expect(wrapper.findComponent(Home).exists()).toBe(true);
+    expect(wrapper.findComponent(Home).exists()).toBe(true);
 });
 
 // SHOEINFO
-it('Renders ShoeInfo view via routing', async () => {
-  const router = new VueRouter({ routes }),
-    wrapper = mount(App, {
-      localVue,
-      router,
-    });
+it('Renders ShoeInfo view via routing', async() => {
+    const router = new VueRouter({ routes }),
+        wrapper = mount(App, {
+            localVue,
+            router,
+        });
 
-  router.push('/shoeinfo'); // Ska vi ha id eller liknande efter också?
-  await wrapper.vm.$nextTick();
+    router.push('/shoeinfo'); // Ska vi ha id eller liknande efter också?
+    await wrapper.vm.$nextTick();
 
-  expect(wrapper.findComponent(ShoeInfo).exists()).toBe(true);
+    expect(wrapper.findComponent(ShoeInfo).exists()).toBe(true);
 });
 
 // Cart
-it('Renders Cart view via routing', async () => {
-  const router = new VueRouter({ routes }),
-    wrapper = mount(App, {
-      localVue,
-      router,
-    });
+it('Renders Cart view via routing', async() => {
+    const router = new VueRouter({ routes }),
+        wrapper = mount(App, {
+            localVue,
+            router,
+        });
 
-  router.push('/cart'); // Ska vi ha id eller liknande efter också?
-  await wrapper.vm.$nextTick();
+    router.push('/cart'); // Ska vi ha id eller liknande efter också?
+    await wrapper.vm.$nextTick();
 
-  expect(wrapper.findComponent(Cart).exists()).toBe(true);
+    expect(wrapper.findComponent(Cart).exists()).toBe(true);
 });

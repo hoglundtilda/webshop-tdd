@@ -6,7 +6,7 @@ export default [{
         component: Home,
     },
     {
-        path: "/ShoeInfo",
+        path: "/ShoeInfo/:shoe",
         name: "ShoeInfo",
         component: ShoeInfo,
     },
