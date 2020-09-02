@@ -5,6 +5,7 @@ import routes from '@/router/routes';
 import ShoeInfo from '@/views/ShoeInfo.vue';
 import Home from '@/views/Home.vue';
 import Cart from '@/views/Cart.vue';
+import Nav from '@/components/nav.vue';
 
 // TESTA ATT RÄTT VIEWS RENDERAS FÖR ROUTER LINKS
 
