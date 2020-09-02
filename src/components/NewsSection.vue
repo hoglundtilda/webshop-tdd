@@ -21,7 +21,7 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .news_section {
   min-height: 500px;
@@ -98,5 +98,4 @@ p {
   margin-bottom: 3rem;
   font-size: 1rem;
 }
-
 </style>
