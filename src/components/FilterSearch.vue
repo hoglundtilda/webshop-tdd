@@ -49,7 +49,7 @@ export default {
         this.$store.state.setFilter.minPrice = splitPrice[0];
         this.$store.state.setFilter.maxPrice = splitPrice[1];
       }
-      this.$store.dispatch("filterPrice");
+      this.$store.dispatch("setFilter/filterPrice");
     },
   },
 };
