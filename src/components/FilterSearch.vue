@@ -35,44 +35,97 @@
 </template>
 
 <script>
+import jsonProducts from "@/assets/products.json";
 export default {
   data: () => {
     return {
       size: "Size",
       price: "Price",
       input: "",
+      minPrice: "",
+      maxPrice: "",
+      hasSizeFilter: false,
+      hasInputFilter: false,
+      hasPriceFilter: false,
+      hasFilter: false,
+      products: jsonProducts.products,
+      filteredProducts: [],
     };
   },
   methods: {
+    filterBySize() {
+      if (this.hasSizeFilter === false) {
+        this.hasFilter = false;
+        this.filteredProducts = this.products;
+      } else {
+        this.hasFilter = true;
+        this.filteredProducts = this.products.filter((product) => {
+          for (let i = 0; i < product.sizes.length; i++) {
+            let stock = parseInt(product.sizes[i].stock);
+            if (product.sizes[i].size === this.size && stock > 0) {
+              return product;
+            }
+          }
+        });
+      }
+      this.filterByPrice();
+    },
+    filterByPrice() {
+      if (this.hasPriceFilter === false && this.hasFilter === false) {
+        this.hasFilter = false;
+        this.products = jsonProducts.products;
+      } else {
+        this.hasFilter = true;
+        this.filteredProducts = this.filteredProducts.filter((product) => {
+          if (
+            parseInt(product.price) >= parseInt(this.minPrice) &&
+            parseInt(product.price) <= parseInt(this.maxPrice)
+          ) {
+            return product;
+          }
+        });
+      }
+      this.filterByInput();
+    },
+    filterByInput() {
+      if (this.hasInputFilter === false && this.hasFilter === false) {
+        this.hasFilter = false;
+        this.products = jsonProducts.products;
+      } else {
+        this.hasFilter = true;
+        this.filteredProducts = this.filteredProducts.filter((product) => {
+          const str = product.brand.toLowerCase();
+          return str.includes(this.input);
+        });
+      }
+      this.$emit("hasFilter", this.hasFilter);
+      this.$emit("filteredProducts", this.filteredProducts);
+    },
     setFilter() {
       // PRICE
       if (this.price === "Price") {
-        this.$store.state.setFilter.hasPriceFilter = false;
+        this.hasPriceFilter = false;
       } else {
-        this.$store.state.setFilter.hasPriceFilter = true;
+        this.hasPriceFilter = true;
         const splitPrice = this.price.split("-");
-        this.$store.state.setFilter.minPrice = splitPrice[0];
-        this.$store.state.setFilter.maxPrice = splitPrice[1];
-        console.log("hejhej");
+        this.minPrice = splitPrice[0];
+        this.maxPrice = splitPrice[1];
       }
       // SIZE
       if (this.size === "Size") {
-        this.$store.state.setFilter.hasSizeFilter = false;
+        this.hasSizeFilter = false;
       } else {
-        this.$store.state.setFilter.hasSizeFilter = true;
-        this.$store.state.setFilter.size = this.size;
+        this.hasSizeFilter = true;
       }
 
       // INPUT
       if (this.input === "") {
-        this.$store.state.setFilter.hasInputFilter = false;
+        this.hasInputFilter = false;
       } else {
-        this.$store.state.setFilter.hasInputFilter = true;
-        this.$store.state.setFilter.input = this.input;
+        this.hasInputFilter = true;
       }
-      console.log(this.input);
       //Starta action i store
-      this.$store.dispatch("setFilter/filterProducts");
+      this.filterBySize();
     },
   },
 };
