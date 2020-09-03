@@ -2,11 +2,10 @@
   <div class="nav">
     <ul>
       <p @click="goToHome">Home</p>
+      <p>Skor</p>
       <p>Nyhter</p>
-      <p>Kollektion</p>
       <p>Om</p>
     </ul>
-
     <CartButton class="cart_button" />
   </div>
 </template>
@@ -38,11 +37,12 @@ export default {
     display: flex;
 
     p {
-      margin: 1.2em;
+      margin: 1.2em 1.8em;
       color: $white;
       font-weight: 100;
-      font-size: 0.9em;
-      letter-spacing: 5px;
+      font-size: 0.75em;
+      letter-spacing: 7px;
+      text-transform: uppercase;
     }
   }
 

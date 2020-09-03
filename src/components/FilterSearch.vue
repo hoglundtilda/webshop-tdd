@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <section class="filters">
-      <select name id="group_size" class="size" v-model="size">
-        <option value="Size">Size</option>
+      <select id="group_size" class="size" v-model="size">
+        <option hidden selected value="Size">Size</option>
         <option value="35">35</option>
         <option value="36">36</option>
         <option value="37">37</option>
@@ -15,8 +15,8 @@
         <option value="44">44</option>
         <option value="45">45</option>
       </select>
-      <select name id="group_price" class="price" v-model="price">
-        <option value="Price">Price</option>
+      <select id="group_price" class="price" v-model="price">
+        <option hidden selected value="Price">Price</option>
         <option value="700-899">700-899</option>
         <option value="900-1099">900-1099</option>
         <option value="1100-1299">1100-1299</option>
@@ -152,7 +152,9 @@ body {
       width: 6rem;
       height: 2em;
       margin: 0 0.5rem;
-      color: $grey;
+      color: $dark;
+      font-weight: 700;
+      font-family: $font;
     }
 
     .searchfieled {
@@ -181,15 +183,14 @@ body {
 
     button {
       background: none;
-      border: 1px solid $dark;
+      border: 0.75px solid $dark;
       border-radius: 2px;
-      color: $grey;
+      color: $dark;
       padding: 0.5em;
       margin: 0 1em;
       text-align: center;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 0.7em;
+      font-weight: 700;
+      font-size: 0.9em;
     }
   }
 }
