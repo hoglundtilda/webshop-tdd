@@ -1,17 +1,16 @@
 <template>
   <div class="wrapper">
-    <FilterSearch />
+    <FilterSearch @filteredProducts="filteredProducts" @hasFilter="hasFilter" />
 
     <ul class="productUl">
       <li
-        v-for="(product, index) in products"
+        v-for="(product, index) in renderProducts"
         :key="index"
         @click="showShoe(index)"
         class="product"
       >
         <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
         <p class="productPrice">{{ product.price }} kr</p>
-
         <p class="productBrand">{{ product.brand }} -</p>
         <p class="productModel">{{ product.name }}</p>
       </li>
@@ -23,25 +22,32 @@
 import FilterSearch from "./FilterSearch.vue";
 import json from "@/store/filter.js";
 export default {
+  components: { FilterSearch },
   data: () => {
     return {
-      filteredProducts: [],
+      products: json.products,
+      filter: false,
     };
   },
-  components: { FilterSearch },
   computed: {
-    products() {
-      if (this.$store.state.setFilter.hasFilter === false)
-        return this.$store.state.setFilter.products;
-
-      if (this.$store.state.setFilter.hasFilter === true)
-        return this.$store.state.setFilter.filteredProducts;
+    renderProducts() {
+      if (this.filter === true) {
+        return this.products;
+      } else {
+        return json.products;
+      }
     },
   },
   methods: {
     showShoe(index) {
       let shoe = this.products[index];
       this.$router.push("/shoeinfo/" + shoe.id);
+    },
+    hasFilter(filter) {
+      this.filter = filter;
+    },
+    filteredProducts(products) {
+      this.products = products;
     },
   },
 };

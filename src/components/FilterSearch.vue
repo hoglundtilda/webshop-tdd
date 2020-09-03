@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="dropdown">
-      <select name id="group_size" class="size">
+      <select name id="group_size" class="size" v-model="size">
         <option value="Size">Size</option>
         <option value="35">35</option>
         <option value="36">36</option>
@@ -15,7 +15,7 @@
         <option value="44">44</option>
         <option value="45">45</option>
       </select>
-      <select name id="group_price" class="price" @change="filterPrice($event)" v-model="key">
+      <select name id="group_price" class="price" v-model="price">
         <option value="Price">Price</option>
         <option value="700-899">700-899</option>
         <option value="900-1099">900-1099</option>
@@ -25,29 +25,105 @@
       </select>
     </section>
     <div class="searchfieled">
-      <input type="text" class="input" />
+      <input type="text" class="input" v-model="input" />
       <i class="fas fa-search"></i>
     </div>
+    <button class="filter_button" @click="setFilter">Filtrera</button>
   </div>
 </template>
 
 <script>
+import jsonProducts from "@/assets/products.json";
 export default {
   data: () => {
     return {
-      key: "",
+      size: "Size",
+      price: "Price",
+      input: "",
+      minPrice: "",
+      maxPrice: "",
+      hasSizeFilter: false,
+      hasInputFilter: false,
+      hasPriceFilter: false,
+      hasFilter: false,
+      products: jsonProducts.products,
+      filteredProducts: [],
     };
   },
   methods: {
-    filterPrice(event) {
-      if (event.target.value === "Price") {
-        this.$store.state.setFilter.noPriceFilter = event.target.value;
+    filterBySize() {
+      if (this.hasSizeFilter === false) {
+        this.hasFilter = false;
+        this.filteredProducts = this.products;
       } else {
-        const splitPrice = event.target.value.split("-");
-        this.$store.state.setFilter.minPrice = splitPrice[0];
-        this.$store.state.setFilter.maxPrice = splitPrice[1];
+        this.hasFilter = true;
+        this.filteredProducts = this.products.filter((product) => {
+          for (let i = 0; i < product.sizes.length; i++) {
+            let stock = parseInt(product.sizes[i].stock);
+            if (product.sizes[i].size === this.size && stock > 0) {
+              return product;
+            }
+          }
+        });
       }
-      this.$store.dispatch("setFilter/filterPrice");
+      this.filterByPrice();
+    },
+    filterByPrice() {
+      if (this.hasPriceFilter === false && this.hasFilter === false) {
+        this.hasFilter = false;
+        this.products = jsonProducts.products;
+      } else {
+        this.hasFilter = true;
+        this.filteredProducts = this.filteredProducts.filter((product) => {
+          if (
+            parseInt(product.price) >= parseInt(this.minPrice) &&
+            parseInt(product.price) <= parseInt(this.maxPrice)
+          ) {
+            return product;
+          }
+        });
+      }
+      this.filterByInput();
+    },
+    filterByInput() {
+      if (this.hasInputFilter === false && this.hasFilter === false) {
+        this.hasFilter = false;
+        this.products = jsonProducts.products;
+      } else {
+        this.hasFilter = true;
+        this.filteredProducts = this.filteredProducts.filter((product) => {
+          const str = product.brand.toLowerCase();
+          return str.includes(this.input);
+        });
+      }
+      this.$emit("hasFilter", this.hasFilter);
+      this.$emit("filteredProducts", this.filteredProducts);
+    },
+    setFilter() {
+      // PRICE
+      if (this.price === "Price") {
+        this.hasPriceFilter = false;
+      } else {
+        this.hasPriceFilter = true;
+        const splitPrice = this.price.split("-");
+        this.minPrice = splitPrice[0];
+        this.maxPrice = splitPrice[1];
+      }
+      // SIZE
+      if (this.size === "Size") {
+        this.hasSizeFilter = false;
+      } else {
+        this.hasSizeFilter = true;
+      }
+
+      // INPUT
+      if (this.input === "") {
+        this.hasInputFilter = false;
+      } else {
+        this.hasInputFilter = true;
+      }
+      //Starta action i store
+      this.filterBySize();
     },
   },
 };
