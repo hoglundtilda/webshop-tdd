@@ -20,7 +20,7 @@
 
 <script>
 import FilterSearch from "./FilterSearch.vue";
-import json from "@/store/filter.js";
+import json from "@/assets/products.json";
 export default {
   components: { FilterSearch },
   data: () => {
