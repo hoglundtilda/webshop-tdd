@@ -32,12 +32,13 @@ export default {
 }
 
 .header {
+  height: 100vh;
   .hero {
     display: flex;
     background: $dark;
-
+    height: 100%;
     .img_container {
-      width: 50%;
+      width: 65%;
       img {
         width: 100%;
         height: 100%;
@@ -47,7 +48,7 @@ export default {
     .call_to_action {
       width: 50%;
       text-align: right;
-      margin-top: 3em;
+      margin-top: 5em;
       div {
         display: flex;
         flex-direction: column;
@@ -57,16 +58,20 @@ export default {
 
         h1 {
           max-width: 5em;
-          font-size: 7em;
+          font-size: 8em;
           color: $white;
           text-transform: capitalize;
-          line-height: 1.4;
-          font-weight: 400;
+          line-height: 1.2;
+          font-weight: 300;
+          letter-spacing: 10px;
         }
 
         span {
           color: $color;
-          font-size: 1.6em;
+          font-size: 1.2em;
+          letter-spacing: 3px;
+          font-weight: 100;
+          margin-right: 15px;
         }
 
         button {
@@ -75,10 +80,26 @@ export default {
           background: none;
           color: $white;
           padding: 1.2em;
-          margin: 5em 0;
+          margin: 8em 0;
           font-size: 1em;
           min-width: 20em;
           letter-spacing: 5px;
+        }
+
+        button:hover {
+          color: $color;
+          border-color: $color;
+          cursor: pointer;
+          animation-name: pop;
+          transform: perspective(1px) translateZ(0);
+          animation-iteration-count: 1;
+          animation-duration: 0.6s;
+        }
+
+        @keyframes pop {
+          50% {
+            transform: scale(1.03);
+          }
         }
       }
     }
