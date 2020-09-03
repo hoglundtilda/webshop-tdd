@@ -150,7 +150,7 @@ body {
     .size,
     .price {
       width: 6rem;
-      height: 2em;
+      height: 26px;
       margin: 0 0.5rem;
       color: $dark;
       font-weight: 700;
@@ -186,7 +186,8 @@ body {
       border: 0.75px solid $dark;
       border-radius: 2px;
       color: $dark;
-      padding: 0.5em;
+      height: 26px;
+      padding: 0 0.5em;
       margin: 0 1em;
       text-align: center;
       font-weight: 700;
