@@ -3,37 +3,70 @@ import jsonProducts from '@/assets/products.json';
 const state = {
   minPrice: '',
   maxPrice: '',
-  noPriceFilter: '',
   size: '',
+  input: '',
+  hasSizeFilter: false,
+  hasInputFilter: false,
+  hasPriceFilter: false,
+  hasFilter: false,
   products: jsonProducts.products,
   filteredProducts: [],
-  hasFilter: false,
 };
 const mutations = {
-  price(state) {
-    if (
-      state.minPrice === '' ||
-      state.maxPrice === '' ||
-      state.noPriceFilter === 'Price'
-    ) {
+  // size without pricefilter
+  filterBySize(state) {
+    if (state.hasSizeFilter === false) {
+      state.hasFilter = false;
+      state.products = jsonProducts.products;
+      state.filteredProducts = jsonProducts.products;
+      console.log('1');
+    } else {
+      console.log('2');
+      state.hasFilter = true;
+      state.filteredProducts = jsonProducts.products.filter((product) => {
+        for (let i = 0; i < product.sizes.length; i++) {
+          let stock = parseInt(product.sizes[i].stock);
+          if (product.sizes[i].size === state.size && stock > 0) {
+            return product;
+          }
+        }
+      });
+    }
+    this.commit('setFilter/filterByPrice');
+  },
+  filterByPrice(state) {
+    if (state.hasPriceFilter === false && state.hasFilter === false) {
       state.hasFilter = false;
       state.products = jsonProducts.products;
     } else {
       state.hasFilter = true;
-      state.filteredProducts = jsonProducts.products.filter((product) => {
+      state.filteredProducts = state.filteredProducts.filter((product) => {
         if (
-          parseInt(product.price) >= state.minPrice &&
-          parseInt(product.price) <= state.maxPrice
+          parseInt(product.price) >= parseInt(state.minPrice) &&
+          parseInt(product.price) <= parseInt(state.maxPrice)
         ) {
           return product;
         }
       });
     }
+    this.commit('setFilter/filterByInput');
+  },
+  filterByInput(state) {
+    if (state.hasInputFilter === false && state.hasFilter === false) {
+      state.hasFilter = false;
+      state.products = jsonProducts.products;
+    } else {
+      state.hasFilter = true;
+      state.filteredProducts = state.filteredProducts.filter((product) => {
+        const str = product.brand.toLowerCase();
+        return str.includes(state.input);
+      });
+    }
   },
 };
 const actions = {
-  filterPrice(ctx) {
-    ctx.commit('price');
+  filterProducts(ctx) {
+    ctx.commit('filterBySize');
   },
 };
 

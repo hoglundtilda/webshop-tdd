@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="dropdown">
-      <select name id="group_size" class="size">
+      <select name id="group_size" class="size" v-model="size">
         <option value="Size">Size</option>
         <option value="35">35</option>
         <option value="36">36</option>
@@ -15,7 +15,7 @@
         <option value="44">44</option>
         <option value="45">45</option>
       </select>
-      <select name id="group_price" class="price" @change="filterPrice($event)" v-model="key">
+      <select name id="group_price" class="price" v-model="price">
         <option value="Price">Price</option>
         <option value="300-499">300-499</option>
         <option value="500-699">500-699</option>
@@ -27,9 +27,10 @@
       </select>
     </section>
     <div class="searchfieled">
-      <input type="text" class="input" />
+      <input type="text" class="input" v-model="input" />
       <i class="fas fa-search"></i>
     </div>
+    <button class="filter_button" @click="setFilter">Filtrera</button>
   </div>
 </template>
 
@@ -37,19 +38,41 @@
 export default {
   data: () => {
     return {
-      key: "",
+      size: "Size",
+      price: "Price",
+      input: "",
     };
   },
   methods: {
-    filterPrice(event) {
-      if (event.target.value === "Price") {
-        this.$store.state.setFilter.noPriceFilter = event.target.value;
+    setFilter() {
+      // PRICE
+      if (this.price === "Price") {
+        this.$store.state.setFilter.hasPriceFilter = false;
       } else {
-        const splitPrice = event.target.value.split("-");
+        this.$store.state.setFilter.hasPriceFilter = true;
+        const splitPrice = this.price.split("-");
         this.$store.state.setFilter.minPrice = splitPrice[0];
         this.$store.state.setFilter.maxPrice = splitPrice[1];
+        console.log("hejhej");
       }
-      this.$store.dispatch("setFilter/filterPrice");
+      // SIZE
+      if (this.size === "Size") {
+        this.$store.state.setFilter.hasSizeFilter = false;
+      } else {
+        this.$store.state.setFilter.hasSizeFilter = true;
+        this.$store.state.setFilter.size = this.size;
+      }
+
+      // INPUT
+      if (this.input === "") {
+        this.$store.state.setFilter.hasInputFilter = false;
+      } else {
+        this.$store.state.setFilter.hasInputFilter = true;
+        this.$store.state.setFilter.input = this.input;
+      }
+      console.log(this.input);
+      //Starta action i store
+      this.$store.dispatch("setFilter/filterProducts");
     },
   },
 };
