@@ -1,6 +1,6 @@
 <template>
   <div @click="toCart" class="cart_button">
-    <i class="fas fa-shopping-cart fa-2x" @click="toCart"></i>
+    <i class="fas fa-shopping-cart fa-2x"></i>
     <span>{{cartItems}}</span>
   </div>
 </template>
@@ -17,7 +17,10 @@ export default {
   },
   methods: {
     toCart() {
-      this.$router.push("/cart/");
+      const path = `/cart`;
+      if (this.$route.path !== path) {
+        this.$router.push(path);
+      }
     },
   },
 };

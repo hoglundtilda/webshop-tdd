@@ -64,6 +64,16 @@ export default {
           line-height: 1.2;
           font-weight: 300;
           letter-spacing: 10px;
+          animation: fade 3s;
+        }
+
+        @keyframes fade {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         span {
