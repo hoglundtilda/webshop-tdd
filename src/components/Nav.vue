@@ -32,6 +32,7 @@ export default {
     p {
       margin: 1.5em;
       color: $white;
+      font-weight: 100;
     }
   }
 

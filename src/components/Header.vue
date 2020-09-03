@@ -47,7 +47,7 @@ export default {
     .call_to_action {
       width: 50%;
       text-align: right;
-
+      margin-top: 3em;
       div {
         display: flex;
         flex-direction: column;
@@ -61,6 +61,7 @@ export default {
           color: $white;
           text-transform: capitalize;
           line-height: 1.4;
+          font-weight: 400;
         }
 
         span {
@@ -76,7 +77,8 @@ export default {
           padding: 1.2em;
           margin: 5em 0;
           font-size: 1em;
-          width: calc(100% - 15em);
+          min-width: 20em;
+          letter-spacing: 5px;
         }
       }
     }
