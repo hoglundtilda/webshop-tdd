@@ -46,11 +46,16 @@ export default {
     border-radius: 100%;
     width: 1.2em;
     height: 1.2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.1em;
+    margin-right: 0.5em;
     font-family: $font;
-
+    font-size: 0.8em;
+    color: $dark;
     margin-left: 2em;
     display: flex;
     text-align: center;
+    justify-items: center;
     align-items: center;
     justify-content: center;
     font-weight: bolder;
