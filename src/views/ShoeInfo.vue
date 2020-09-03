@@ -1,15 +1,32 @@
 <template>
   <div class="wrapper">
     <section class="heading">
-      <i class="fas fa-arrow-left fa-3x" @click="back"></i>
+      <i class="fas fa-arrow-left fa-2x" @click="back"></i>
+      <CartButton class="cartIcon" />
     </section>
     <section class="shoeInfo">
       <div class="small_images">
-        <img :src="require(`../assets/img/${shoe.images[0]}`)" alt class="smallImg" />
-        <img :src="require(`../assets/img/${shoe.images[1]}`)" alt class="smallImg" />
-        <img :src="require(`../assets/img/${shoe.images[2]}`)" alt class="smallImg" />
+        <img
+          :src="require(`../assets/img/${shoe.images[0]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[0])"
+        />
+        <img
+          :src="require(`../assets/img/${shoe.images[1]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[1])"
+        />
+        <img
+          :src="require(`../assets/img/${shoe.images[2]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[2])"
+        />
       </div>
-      <img :src="require(`../assets/img/${shoe.images[0]}`)" alt class="bigImg" />
+      <img :src="require(`../assets/img/${image}`)" alt class="bigImg" />
+
       <section class="product">
         <h1>{{ shoe.brand }} - {{ shoe.name }}</h1>
         <h3>
@@ -17,16 +34,21 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select v-model="selected" name="sizes" id class="sizes">
+        <select name="sizes" id class="sizes" v-model="selectedOption">
           <option value hidden>VÄLJ STORLEK</option>
           <option
-            :value="option.size"
+            :value="option.stock"
             v-for="(option, index) in shoe.sizes"
             :key="index"
             class="options"
           >Storlek: {{ option.size }}, Antal i lager: {{ option.stock }}</option>
         </select>
-        <button class="addToCart" @click="addToCart(shoeToCart)">LÄGG I VARUKORGEN</button>
+        <button
+          class="addToCart"
+          @click="addToCart(shoe)"
+          :disabled="selectedOption <= 0"
+          :class="selectedOption <= 0 || selectedOption == 0 ? 'buttonDisabled': 'addToCart'"
+        >LÄGG I VARUKORGEN</button>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>
@@ -47,25 +69,45 @@
         </section>
       </section>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
+import CartButton from "@/components/CartButton.vue";
 export default {
   name: "ShoeInfo",
   props: {
     products: Array,
   },
-  data() {
+  components: {
+    Footer,
+    CartButton,
+  },
+  data: () => {
     return {
-      selected: "",
+      selectedOption: "",
+      img: "",
     };
   },
   computed: {
     shoe() {
-      return this.products.filter(
+      const shoe = this.products.filter(
         (shoe) => shoe.id == this.$route.params.shoe
       )[0];
+      this.img = shoe.images[0];
+      return shoe;
+    },
+    image() {
+      if (this.img === "") {
+        const shoe = this.products.filter(
+          (shoe) => shoe.id == this.$route.params.shoe
+        )[0];
+        return shoe.images[0];
+      } else {
+        return this.img;
+      }
     },
     shoeToCart() {
       return Object.assign({}, this.shoe, { sizes: this.selected, qty: 1 });
@@ -78,25 +120,43 @@ export default {
     },
     addToCart(shoe) {
       this.$store.dispatch("addToCart", shoe);
+      console.log(this.selectedOption);
+    },
+    switchImage(image) {
+      this.img = image;
     },
   },
 };
 </script>
 
-<style>
-.fa-arrow-left {
+<style lang="scss">
+@import "@/assets/scss/variables";
+.heading {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  margin-bottom: 5rem;
+}
+
+.fa-arrow-left,
+.cartIcon {
   width: 2.5rem;
   height: 2.5rem;
-  margin: 1rem 2rem;
+  margin: 1em;
+}
+.cartIcon {
+  color: black;
 }
 .shoeInfo {
   display: flex;
   justify-content: center;
+  height: 90vh;
 }
 .small_images {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 80vh;
 }
 .smallImg {
   width: 10rem;
@@ -138,7 +198,7 @@ h3 {
   height: 3rem;
   font-size: 1rem;
   margin-left: 2rem;
-  background-color: #152222;
+  background-color: $dark;
   color: white;
   border: none;
   outline: none;
@@ -147,7 +207,12 @@ h3 {
   transition-duration: 0.2s;
 }
 .addToCart:active {
-  transform: scale(1.02);
+  transform: scale(1.03);
+}
+
+.buttonDisabled {
+  background-color: $red;
+  cursor: not-allowed;
 }
 .goodToKnow {
   display: flex;
