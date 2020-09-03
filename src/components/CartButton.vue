@@ -1,6 +1,6 @@
 <template>
   <div @click="toCart" class="cart_button">
-    <img src="../assets/img/bag.svg" alt="bag" />
+    <i class="fas fa-shopping-cart fa-2x" @click="toCart"></i>
     <span>{{cartItems}}</span>
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
   },
   computed: {
     cartItems() {
-      return this.$store.state.cartItems.toString();
+      return this.$store.state.shoppingCart.length;
     },
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
   height: 50px;
   width: 50px;
   padding: 8px;
-  border: 1px solid $white;
+
   justify-content: center;
   display: flex;
 
@@ -47,8 +47,8 @@ export default {
     width: 1.2em;
     height: 1.2em;
     font-family: $font;
-    margin-top: 1em;
-    margin-left: 0.7em;
+
+    margin-left: 2em;
     display: flex;
     text-align: center;
     align-items: center;
