@@ -1,5 +1,5 @@
 <template>
-  <div class="cart_button">
+  <div @click="toCart" class="cart_button">
     <img src="../assets/img/bag.svg" alt="bag" />
     <span>{{cartItems}}</span>
   </div>
@@ -15,6 +15,11 @@ export default {
       return this.$store.state.cartItems.toString();
     },
   },
+  methods: {
+    toCart() {
+      this.$router.push("/cart/");
+    },
+  },
 };
 </script>
 
@@ -22,6 +27,7 @@ export default {
 @import "@/assets/scss/variables";
 
 .cart_button {
+  cursor: pointer;
   height: 50px;
   width: 50px;
   padding: 8px;

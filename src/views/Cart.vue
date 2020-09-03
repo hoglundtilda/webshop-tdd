@@ -36,7 +36,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100vw;
   height: 100vh;
   background-image: url("../assets/img/shoes-cart.jpg");
   background-repeat: no-repeat;

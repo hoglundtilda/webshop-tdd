@@ -93,6 +93,7 @@ p {
 }
 
 .whoweare {
+  color: $dark;
   background-color: transparent;
   font-size: 2rem;
   margin-top: 1rem;
@@ -100,6 +101,7 @@ p {
 }
 
 .whoweare_info {
+  color: $dark;
   background-color: transparent;
   margin-bottom: 3rem;
   font-size: 1.2rem;
