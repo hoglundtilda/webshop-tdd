@@ -37,6 +37,7 @@ export default {
 
   .cart_button {
     margin: 1em;
+    color: white;
   }
 }
 </style>

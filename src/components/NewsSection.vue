@@ -24,6 +24,7 @@ export default {};
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
+
 .news_section {
   min-height: 50vh;
   display: grid;

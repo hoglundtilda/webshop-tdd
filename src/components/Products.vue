@@ -20,7 +20,7 @@
 
 <script>
 import FilterSearch from "./FilterSearch.vue";
-import json from "@/assets/products.json";
+import json from "@/store/filter.js";
 export default {
   components: { FilterSearch },
   data: () => {
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     showShoe(index) {
-      let shoe = this.products.products[index];
+      let shoe = this.products[index];
       this.$router.push("/shoeinfo/" + shoe.id);
     },
     hasFilter(filter) {

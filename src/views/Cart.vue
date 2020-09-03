@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import Footer from "@/components/Footer";
 import CheckOut from "@/components/Checkout";
 import CartProduct from "@/components/CartProduct";
@@ -25,9 +24,7 @@ export default {
     CheckOut,
     Footer,
   },
-  computed: {
-    ...mapState["shoppingCart"],
-  },
+  computed: {},
 };
 </script>
 
@@ -36,6 +33,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100;
   height: 100vh;
   background-image: url("../assets/img/shoes-cart.jpg");
   background-repeat: no-repeat;
@@ -43,6 +41,7 @@ export default {
 }
 
 .checkout_section {
+  padding: 2rem;
   display: flex;
   margin-bottom: 20rem;
   gap: 3rem;
