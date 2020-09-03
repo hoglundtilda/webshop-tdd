@@ -17,8 +17,6 @@
       </select>
       <select name id="group_price" class="price" @change="filterPrice($event)" v-model="key">
         <option value="Price">Price</option>
-        <option value="300-499">300-499</option>
-        <option value="500-699">500-699</option>
         <option value="700-899">700-899</option>
         <option value="900-1099">900-1099</option>
         <option value="1100-1299">1100-1299</option>
