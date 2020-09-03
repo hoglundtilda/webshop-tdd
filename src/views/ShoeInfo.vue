@@ -37,7 +37,7 @@
         <select name="sizes" id class="sizes" v-model="selectedOption">
           <option value hidden>VÄLJ STORLEK</option>
           <option
-            :value="option.stock"
+            :value="option"
             v-for="(option, index) in shoe.sizes"
             :key="index"
             class="options"
@@ -45,9 +45,9 @@
         </select>
         <button
           class="addToCart"
-          @click="addToCart(shoe)"
-          :disabled="selectedOption <= 0"
-          :class="selectedOption <= 0 || selectedOption == 0 ? 'buttonDisabled': 'addToCart'"
+          @click="addToCart(shoeToCart)"
+          :disabled="selectedOption.stock <= 0"
+          :class="selectedOption.stock <= 0 || selectedOption.stock == 0 ? 'buttonDisabled': 'addToCart'"
         >LÄGG I VARUKORGEN</button>
         <section class="goodToKnow">
           <div class="material">
@@ -87,11 +87,17 @@ export default {
   },
   data: () => {
     return {
-      selectedOption: "",
+      selectedOption: {},
       img: "",
     };
   },
   computed: {
+    size() {
+      return this.selectedOption.size;
+    },
+    stock() {
+      return this.selectedOption.stock;
+    },
     shoe() {
       const shoe = this.products.filter(
         (shoe) => shoe.id == this.$route.params.shoe
@@ -110,7 +116,10 @@ export default {
       }
     },
     shoeToCart() {
-      return Object.assign({}, this.shoe, { sizes: this.selected, qty: 1 });
+      return Object.assign({}, this.shoe, {
+        sizes: this.selectedOption.size,
+        qty: 1,
+      });
     },
   },
 
