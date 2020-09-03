@@ -4,6 +4,7 @@ import Products from '@/components/Products.vue';
 import jsonProducts from '@/assets/products.json';
 import setFilter from '@/store/filter.js';
 import Vuex from 'vuex';
+import sinon from 'sinon';
 
 const localVue = createLocalVue().use(Vuex);
 
@@ -48,3 +49,5 @@ describe('FilterSearch.vue', () => {
     const size = wrapper.find('.size');
   }); */
 });
+
+it('should expect action to have been called', () => {});
