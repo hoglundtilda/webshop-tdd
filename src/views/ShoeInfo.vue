@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <section class="heading">
-      <i class="fas fa-arrow-left fa-3x" @click="back"></i>
+      <i class="fas fa-arrow-left fa-2x" @click="back"></i>
+      <CartButton class="cartIcon" />
     </section>
     <section class="shoeInfo">
       <div class="small_images">
@@ -46,6 +47,7 @@
           class="addToCart"
           @click="addToCart(shoe)"
           :disabled="selectedOption <= 0"
+          :class="selectedOption <= 0 || selectedOption == 0 ? 'buttonDisabled': 'addToCart'"
         >LÄGG I VARUKORGEN</button>
         <section class="goodToKnow">
           <div class="material">
@@ -67,14 +69,21 @@
         </section>
       </section>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
+import CartButton from "@/components/CartButton.vue";
 export default {
   name: "ShoeInfo",
   props: {
     products: Array,
+  },
+  components: {
+    Footer,
+    CartButton,
   },
   data: () => {
     return {
@@ -117,20 +126,34 @@ export default {
 };
 </script>
 
-<style>
-.fa-arrow-left {
+<style lang="scss">
+@import "@/assets/scss/variables";
+.heading {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  margin-bottom: 5rem;
+}
+
+.fa-arrow-left,
+.cartIcon {
   width: 2.5rem;
   height: 2.5rem;
-  margin: 1rem 2rem;
+  margin: 1em;
+}
+.cartIcon {
+  color: black;
 }
 .shoeInfo {
   display: flex;
   justify-content: center;
+  height: 90vh;
 }
 .small_images {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 80vh;
 }
 .smallImg {
   width: 10rem;
@@ -172,7 +195,7 @@ h3 {
   height: 3rem;
   font-size: 1rem;
   margin-left: 2rem;
-  background-color: #152222;
+  background-color: $dark;
   color: white;
   border: none;
   outline: none;
@@ -181,7 +204,12 @@ h3 {
   transition-duration: 0.2s;
 }
 .addToCart:active {
-  transform: scale(1.02);
+  transform: scale(1.03);
+}
+
+.buttonDisabled {
+  background-color: $red;
+  cursor: not-allowed;
 }
 .goodToKnow {
   display: flex;
