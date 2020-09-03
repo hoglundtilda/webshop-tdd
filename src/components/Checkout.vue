@@ -2,11 +2,11 @@
   <section class="checkout">
     <div>
       <h3 class="total_title">Totalsumma:</h3>
-      <p>4234:-</p>
+      <p>{{totalPrice + 69}}:-</p>
     </div>
     <div>
       <p>Varukorg:</p>
-      <p>4739:-</p>
+      <p>{{totalPrice}}</p>
     </div>
     <div>
       <p>Frakt:</p>
@@ -15,14 +15,22 @@
     <div class="divider"></div>
     <div>
       <p>Total (inkl moms):</p>
-      <p>5019:-</p>
+      <p>{{totalPrice + 69}}</p>
     </div>
     <button class="checkout_button">VIDARE TILL BETALNING</button>
   </section>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["totalPrice"]),
+  },
+};
 </script>
 
 <style lang="scss" scoped>

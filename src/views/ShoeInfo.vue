@@ -17,7 +17,7 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select name="sizes" id class="sizes">
+        <select v-model="selected" name="sizes" id class="sizes">
           <option value hidden>VÄLJ STORLEK</option>
           <option
             :value="option.size"
@@ -26,7 +26,7 @@
             class="options"
           >Storlek: {{ option.size }}, Antal i lager: {{ option.stock }}</option>
         </select>
-        <button class="addToCart" @click="addToCart(shoe)">LÄGG I VARUKORGEN</button>
+        <button class="addToCart" @click="addToCart(shoeToCart)">LÄGG I VARUKORGEN</button>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>
@@ -56,11 +56,19 @@ export default {
   props: {
     products: Array,
   },
+  data() {
+    return {
+      selected: "",
+    };
+  },
   computed: {
     shoe() {
       return this.products.filter(
         (shoe) => shoe.id == this.$route.params.shoe
       )[0];
+    },
+    shoeToCart() {
+      return Object.assign({}, this.shoe, { sizes: this.selected, qty: 1 });
     },
   },
 

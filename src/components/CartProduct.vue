@@ -1,35 +1,62 @@
 <template>
   <section>
-    <article v-for="(cartItem, index) in shoppingCart" :key="index" class="cart_item">
+    <article v-for="(product, index) in products" :key="index" class="cart_item">
       <div class="product_image">
-        <img src alt />
+        <img class="product_image" :src="require(`../assets/img/${product.images[0]}`)" alt />
       </div>
       <div class="shoe_information">
-        <h5 class="product_title">Nmr1 Sport</h5>
-        <p>Sneaker: Adidas Performance</p>
-        <p>Färg: Röd</p>
-        <p>Storlek: 43</p>
-        <div class="remove">
+        <h5 class="product_title">{{product.name}}</h5>
+        <p>{{product.type}} - {{product.brand}}</p>
+        <p>Färg: {{product.color}}</p>
+        <p>Storlek: {{product.sizes}}</p>
+        <div @click="removeFromCart(product)" class="remove">
           <img src="../assets/img/delete.png" alt />
           <p>Ta bort</p>
         </div>
       </div>
       <div class="cartitem_information">
-        <input class="numberof_items" type="text" />
-        <p class="price">2349:-</p>
+        <input
+          class="numberof_items"
+          type="text"
+          :value="product.qty"
+          @input="updateQty($event, product)"
+        />
+        <p class="price">{{parseInt(product.price) * product.qty}}:-</p>
       </div>
     </article>
   </section>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {};
   },
   computed: {
-    ...mapState["shoppingCart"],
+    ...mapState({
+      products: (state) => state.shoppingCart,
+    }),
+    ...mapGetters(["totalPrice"]),
+    totalPrice(product) {
+      console.log(product);
+    },
+  },
+  methods: {
+    removeFromCart(product) {
+      this.$store.dispatch("removeFromCart", product);
+    },
+    updateQty(e, product) {
+      if (e.target.value !== "") {
+        let value = e.target.value;
+        this.$store.dispatch("updateQty", {
+          product: product,
+          value: value,
+        });
+      } else {
+        return;
+      }
+    },
   },
 };
 </script>
@@ -37,11 +64,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .cart_item {
+  margin-bottom: 1rem;
   font-weight: 900;
-  max-height: 180px;
+  max-height: auto;
   padding: 1rem;
   min-width: 500px;
   display: grid;
+
   justify-items: center;
   grid-template-columns: 20% 60% 20%;
   background-color: $white;
@@ -75,6 +104,7 @@ div {
 }
 
 .remove {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -83,5 +113,10 @@ div {
 
 .cart_item p {
   color: #998f8f;
+}
+
+.product_image {
+  width: 100%;
+  height: 100%;
 }
 </style>
