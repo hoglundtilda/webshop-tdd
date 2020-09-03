@@ -41,7 +41,6 @@ export default {
   methods: {
     showShoe(index) {
       let shoe = this.products[index];
-      console.log(shoe);
       this.$router.push("/shoeinfo/" + shoe.id);
     },
   },

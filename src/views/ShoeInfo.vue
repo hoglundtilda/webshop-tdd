@@ -5,11 +5,27 @@
     </section>
     <section class="shoeInfo">
       <div class="small_images">
-        <img :src="require(`../assets/img/${shoe.images[0]}`)" alt class="smallImg" />
-        <img :src="require(`../assets/img/${shoe.images[1]}`)" alt class="smallImg" />
-        <img :src="require(`../assets/img/${shoe.images[2]}`)" alt class="smallImg" />
+        <img
+          :src="require(`../assets/img/${shoe.images[0]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[0])"
+        />
+        <img
+          :src="require(`../assets/img/${shoe.images[1]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[1])"
+        />
+        <img
+          :src="require(`../assets/img/${shoe.images[2]}`)"
+          alt
+          class="smallImg"
+          @click="switchImage(shoe.images[2])"
+        />
       </div>
-      <img :src="require(`../assets/img/${shoe.images[0]}`)" alt class="bigImg" />
+      <img :src="require(`../assets/img/${image}`)" alt class="bigImg" />
+
       <section class="product">
         <h1>{{ shoe.brand }} - {{ shoe.name }}</h1>
         <h3>
@@ -17,16 +33,20 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select name="sizes" id class="sizes">
+        <select name="sizes" id class="sizes" v-model="selectedOption">
           <option value hidden>VÄLJ STORLEK</option>
           <option
-            :value="option.size"
+            :value="option.stock"
             v-for="(option, index) in shoe.sizes"
             :key="index"
             class="options"
           >Storlek: {{ option.size }}, Antal i lager: {{ option.stock }}</option>
         </select>
-        <button class="addToCart" @click="addToCart(shoe)">LÄGG I VARUKORGEN</button>
+        <button
+          class="addToCart"
+          @click="addToCart(shoe)"
+          :disabled="selectedOption <= 0"
+        >LÄGG I VARUKORGEN</button>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>
@@ -56,11 +76,29 @@ export default {
   props: {
     products: Array,
   },
+  data: () => {
+    return {
+      selectedOption: "",
+      img: "",
+    };
+  },
   computed: {
     shoe() {
-      return this.products.filter(
+      const shoe = this.products.filter(
         (shoe) => shoe.id == this.$route.params.shoe
       )[0];
+      this.img = shoe.images[0];
+      return shoe;
+    },
+    image() {
+      if (this.img === "") {
+        const shoe = this.products.filter(
+          (shoe) => shoe.id == this.$route.params.shoe
+        )[0];
+        return shoe.images[0];
+      } else {
+        return this.img;
+      }
     },
   },
 
@@ -70,6 +108,10 @@ export default {
     },
     addToCart(shoe) {
       this.$store.dispatch("addToCart", shoe);
+      console.log(this.selectedOption);
+    },
+    switchImage(image) {
+      this.img = image;
     },
   },
 };
