@@ -9,11 +9,7 @@
         @click="showShoe(index)"
         class="product"
       >
-        <img
-          :src="require(`../assets/img/${product.images[0]}`)"
-          alt
-          class="shoeImg"
-        />
+        <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
         <p class="productPrice">{{ product.price }} kr</p>
 
         <p class="productBrand">{{ product.brand }} -</p>
@@ -25,7 +21,7 @@
 
 <script>
 import FilterSearch from "./FilterSearch.vue";
-import json from "@/assets/products.json";
+import json from "@/store/filter.js";
 export default {
   data: () => {
     return {
@@ -44,7 +40,7 @@ export default {
   },
   methods: {
     showShoe(index) {
-      let shoe = this.products.products[index];
+      let shoe = this.products[index];
       console.log(shoe);
       this.$router.push("/shoeinfo/" + shoe.id);
     },
