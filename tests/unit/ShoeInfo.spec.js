@@ -16,9 +16,9 @@ describe("ShoeInfo.vue", () => {
   // because ShoeInfo relies on params: mock route, with params used in routes.js
   // pass props to get the right shoe through computed properties
 
-  const shoe = "ZZLSSM070-Q11";
+  const shoe = "AD115O0OM-G11";
   const $route = {
-    path: "/shoeinfo/ZZLSSM070-Q11",
+    path: `/shoeinfo/${shoe}`,
   };
   let actions = { addToCart: jest.fn() };
   let store = new Vuex.Store({ actions });
@@ -56,6 +56,17 @@ describe("ShoeInfo.vue", () => {
 
     expect(actions.addToCart).toHaveBeenCalled();
   });
+
+  it("should display a message when selected size is out of stock", async () => {
+   const selectSize = wrapper.findAll(".options");
+
+  await selectSize.at(4).setSelected();
+  
+  const message = wrapper.find(".outOfStockMessage");
+
+  expect(message.exists()).toBe(true)
+
+  })
 
   
 });
