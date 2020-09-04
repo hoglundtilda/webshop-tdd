@@ -10,9 +10,11 @@
         class="product"
       >
         <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
-        <p class="productPrice">{{ product.price }} kr</p>
-        <p class="productBrand">{{ product.brand }}</p>
-        <p class="productModel">{{ product.name }}</p>
+        <div class="info">
+          <p class="productPrice">{{ product.price }} kr</p>
+          <p class="productBrand">{{ product.brand }}</p>
+          <p class="productModel">{{ product.name }}</p>
+        </div>
       </li>
     </ul>
   </div>
@@ -41,7 +43,9 @@ export default {
   methods: {
     showShoe(index) {
       let shoe = this.products[index];
-      this.$router.push("/shoeinfo/" + shoe.id);
+      this.$router
+        .push("/shoeinfo/" + shoe.id)
+        .then(() => window.scrollTo(0, 0));
     },
     hasFilter(filter) {
       this.filter = filter;
@@ -83,6 +87,13 @@ export default {
 .productModel {
   padding: 0.2rem 1rem;
   margin: 0;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem 0;
 }
 
 .productBrand {

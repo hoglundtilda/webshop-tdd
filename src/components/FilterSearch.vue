@@ -24,8 +24,13 @@
         <option value="1500-10000">1500+</option>
       </select>
       <div class="searchfieled">
-        <input type="text" class="input" v-model="input" />
-        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          class="input"
+          v-model="input"
+          placeholder="Search for brands"
+          @keyup.enter="setFilter"
+        />
       </div>
       <button class="button filter" @click="setFilter">Filtrera</button>
       <button class="button reset" @click="resetFilter">Reset</button>
@@ -179,14 +184,6 @@ body {
       padding-top: 0.7em;
       font-size: 0.8em;
       font-family: $font;
-    }
-
-    .fa-search {
-      position: absolute;
-      padding-left: -1em;
-      font-size: 1.2em;
-      color: $dark;
-      right: 0;
     }
 
     button {
