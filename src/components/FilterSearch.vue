@@ -72,7 +72,7 @@ export default {
       if (this.hasPriceFilter === false && this.hasFilter === false) {
         this.hasFilter = false;
         this.products = jsonProducts.products;
-      } else {
+      } else if (this.hasPriceFilter === true) {
         this.hasFilter = true;
         this.filteredProducts = this.filteredProducts.filter((product) => {
           if (
@@ -89,7 +89,7 @@ export default {
       if (this.hasInputFilter === false && this.hasFilter === false) {
         this.hasFilter = false;
         this.products = jsonProducts.products;
-      } else {
+      } else if (this.hasInputFilter === true) {
         this.hasFilter = true;
         this.filteredProducts = this.filteredProducts.filter((product) => {
           const str = product.brand.toLowerCase();

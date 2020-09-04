@@ -56,13 +56,13 @@ describe('FilterSearch.vue', () => {
       expected = products.filter((product) => {
         for (let i = 0; i < product.sizes.length; i++) {
           let stock = parseInt(product.sizes[i].stock);
-          if (product.sizes[i].size === 43 && stock > 0) {
+          if (product.sizes[i].size === '35' && stock > 0) {
             return product;
           }
         }
       });
 
-    await sizeSelect.at(3).setSelected();
+    await sizeSelect.at(1).setSelected();
     await filterBtn.trigger('click');
     const productsArray = wrapper.findAll('li'),
       actual = productsArray.length;
@@ -82,11 +82,32 @@ describe('FilterSearch.vue', () => {
         }
       });
 
-    await priceSelect.at(3).setSelected();
+    await priceSelect.at(1).setSelected();
     await filterBtn.trigger('click');
     const productsArray = wrapper.findAll('li'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected.length);
+  });
+
+  it('should return items matching all filters when pressing filter button', async () => {
+    const filter = wrapper.findComponent(FilterSearch),
+      priceSelect = filter.find('.price').findAll('option'),
+      sizeSelect = filter.find('.size').findAll('option'),
+      input = filter.find('.input'),
+      filterBtn = filter.find('.filter_button'),
+      expected = 1;
+
+    // i know there is only one shoe of this kind and since above filters
+    // are working atm i dont need to test similar functions again.
+    await input.setValue('adidas');
+    await priceSelect.at(4).setSelected();
+    await sizeSelect.at(2).setSelected();
+    await filterBtn.trigger('click');
+
+    const productsArray = wrapper.findAll('li'),
+      actual = productsArray.length;
+
+    expect(actual).toBe(expected);
   });
 });
