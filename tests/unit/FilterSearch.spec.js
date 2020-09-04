@@ -98,7 +98,7 @@ describe('FilterSearch.vue', () => {
       filterBtn = filter.find('.filter'),
       expected = 1;
 
-    // i know there is only one shoe of this kind and since above filters
+    // We know there is only one shoe of this kind and since above filters
     // are working atm i dont need to test similar functions again.
     await input.setValue('vans');
     await priceSelect.at(0).setSelected();
@@ -120,9 +120,11 @@ describe('FilterSearch.vue', () => {
       resetBtn = filter.find('.reset'),
       expected = jsonProducts.products.length;
 
-    await input.setValue('d');
-    await priceSelect.at(3).setSelected();
-    await sizeSelect.at(2).setSelected();
+    // since previous test is working no need to check if array
+    // is updated in this test, we are using the same filters.
+    await input.setValue('vans');
+    await priceSelect.at(0).setSelected();
+    await sizeSelect.at(0).setSelected();
     await filterBtn.trigger('click');
     await resetBtn.trigger('click');
 
