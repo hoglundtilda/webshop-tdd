@@ -121,8 +121,9 @@ export default {
   },
 
   methods: {
-    back() {
-      this.$router.back();
+   back() {
+      this.$router.go(-1);
+     
     },
     addToCart(shoe) {
       this.$store.dispatch("addToCart", shoe);
@@ -198,13 +199,13 @@ h3 {
 .sizes {
   height: 3rem;
   font-size: 1rem;
-  width: 13rem;
+  width: 13.5rem;
   text-align-last: center;
   cursor: pointer;
 }
 
 .addToCart {
-  width: 13rem;
+  width: 13.5rem;
   height: 3rem;
   font-size: 1rem;
   margin-left: 2rem;
