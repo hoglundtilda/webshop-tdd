@@ -11,7 +11,7 @@
       >
         <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
         <p class="productPrice">{{ product.price }} kr</p>
-        <p class="productBrand">{{ product.brand }} -</p>
+        <p class="productBrand">{{ product.brand }}</p>
         <p class="productModel">{{ product.name }}</p>
       </li>
     </ul>
@@ -83,6 +83,11 @@ export default {
 .productModel {
   padding: 0.2rem 1rem;
   margin: 0;
+}
+
+.productBrand {
+  letter-spacing: 2px;
+  font-weight: 300;
 }
 .productPrice {
   font-weight: 900;

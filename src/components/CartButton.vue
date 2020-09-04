@@ -18,7 +18,10 @@ export default {
   },
   methods: {
     toCart() {
-      this.$router.push("/cart/");
+      const path = `/cart`;
+      if (this.$route.path !== path) {
+        this.$router.push(path);
+      }
     },
   },
 };
@@ -32,7 +35,6 @@ export default {
   height: 50px;
   width: 50px;
   padding: 8px;
-
   justify-content: center;
   display: flex;
 
@@ -47,14 +49,32 @@ export default {
     border-radius: 100%;
     width: 1.2em;
     height: 1.2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.1em;
+    margin-right: 0.5em;
     font-family: $font;
-
+    font-size: 1.1em;
+    color: $dark;
     margin-left: 2em;
     display: flex;
     text-align: center;
+    justify-items: center;
     align-items: center;
     justify-content: center;
     font-weight: bolder;
   }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.cart_button:hover {
+  animation-name: pop;
+  transform: perspective(1px) translateZ(0);
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
 }
 </style>

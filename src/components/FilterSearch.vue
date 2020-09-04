@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <section class="dropdown">
-      <select name id="group_size" class="size" v-model="size">
-        <option value="Size">Size</option>
+    <section class="filters">
+      <select id="group_size" class="size" v-model="size">
+        <option hidden selected value="Size">Size</option>
         <option value="35">35</option>
         <option value="36">36</option>
         <option value="37">37</option>
@@ -15,20 +15,20 @@
         <option value="44">44</option>
         <option value="45">45</option>
       </select>
-      <select name id="group_price" class="price" v-model="price">
-        <option value="Price">Price</option>
+      <select id="group_price" class="price" v-model="price">
+        <option hidden selected value="Price">Price</option>
         <option value="700-899">700-899</option>
         <option value="900-1099">900-1099</option>
         <option value="1100-1299">1100-1299</option>
         <option value="1300-1499">1300-1499</option>
         <option value="1500-10000">1500+</option>
       </select>
+      <div class="searchfieled">
+        <input type="text" class="input" v-model="input" />
+        <i class="fas fa-search"></i>
+      </div>
+      <button class="filter_button" @click="setFilter">Filtrera</button>
     </section>
-    <div class="searchfieled">
-      <input type="text" class="input" v-model="input" />
-      <i class="fas fa-search"></i>
-    </div>
-    <button class="filter_button" @click="setFilter">Filtrera</button>
   </div>
 </template>
 
@@ -136,30 +136,63 @@ body {
 }
 .wrapper {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   border-bottom: 2px solid rgb(230, 228, 228);
-  height: 3em;
-  margin: 1rem 0rem;
-}
+  height: 4em;
 
-.size {
-  margin: 0 1rem;
-}
-.size,
-.price {
-  width: 6rem;
-}
-.searchfieled {
-  position: relative;
-}
-.input {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid grey;
-}
-.fa-search {
-  position: absolute;
-  right: 0.1rem;
-  bottom: 1.7rem;
+  .filters {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .size,
+    .price {
+      width: 6rem;
+      height: 26px;
+      margin: 0 0.5rem;
+      color: $dark;
+      font-weight: 700;
+      font-family: $font;
+    }
+
+    .searchfieled {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 2em;
+    }
+    .input {
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $dark;
+      width: 20em;
+      padding-top: 0.7em;
+      font-size: 0.8em;
+      font-family: $font;
+    }
+
+    .fa-search {
+      position: absolute;
+      padding-left: -1em;
+      font-size: 1.2em;
+      color: $dark;
+      right: 0;
+    }
+
+    button {
+      background: none;
+      border: 0.75px solid $dark;
+      border-radius: 2px;
+      color: $dark;
+      height: 26px;
+      padding: 0 0.5em;
+      margin: 0 1em;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9em;
+    }
+  }
 }
 </style>

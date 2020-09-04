@@ -34,8 +34,8 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select name="sizes" id class="sizes" v-model="selectedOption">
-          <option value hidden>VÄLJ STORLEK</option>
+        <select name="sizes" class="sizes" v-model="selectedOption">
+          <option disabled hidden value class="options">VÄLJ STORLEK</option>
           <option
             :value="option"
             v-for="(option, index) in shoe.sizes"
@@ -87,7 +87,7 @@ export default {
   },
   data: () => {
     return {
-      selectedOption: {},
+      selectedOption: "",
       img: "",
     };
   },
