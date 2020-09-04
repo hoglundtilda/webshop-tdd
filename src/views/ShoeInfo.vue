@@ -64,7 +64,7 @@
             <p>Klack/Sula: {{ shoe.productinfo.Klack }}</p>
             <p>Förslutning: {{ shoe.productinfo.Förslutning }}</p>
             <p>Mönster: {{ shoe.productinfo.Mönster }}</p>
-            <p>Artikelnummer: {{ shoe.productinfo.Artikelnummer }}</p>
+            <p class="article_number">Artikelnummer: {{ shoe.productinfo.Artikelnummer }}</p>
           </div>
         </section>
       </section>
@@ -100,7 +100,7 @@ export default {
     },
     shoe() {
       const shoe = this.products.filter(
-        (shoe) => shoe.id == this.$route.params.shoe
+        (shoe) => shoe.productinfo.Artikelnummer == this.$route.params.shoe
       )[0];
       this.img = shoe.images[0];
       return shoe;
@@ -108,7 +108,7 @@ export default {
     image() {
       if (this.img === "") {
         const shoe = this.products.filter(
-          (shoe) => shoe.id == this.$route.params.shoe
+          (shoe) => shoe.productinfo.Artikelnummer == this.$route.params.shoe
         )[0];
         return shoe.images[0];
       } else {
@@ -126,7 +126,6 @@ export default {
     },
     addToCart(shoe) {
       this.$store.dispatch("addToCart", shoe);
-      console.log(this.selectedOption);
     },
     switchImage(image) {
       this.img = image;
