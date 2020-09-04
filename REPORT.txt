@@ -1,0 +1,42 @@
+Medlemmar:
+Stefan Isgren, FRK19G
+Fredrik Berntsson, FRK19G
+Matilda Höglund, FRK19G
+(Suttit i skolan och arbetat tillsammans)
+
+Länkar:
+TRELLO https://trello.com/b/Dec8km2l/grupprojekt-webshop
+DOCS https://docs.google.com/document/d/1ztaK_IKcf1_lQkF4ZaX22iOQqivN1emotMRyzGWg6Io/edit?ts=5f4c978e
+FIGMA https://www.figma.com/file/IJexuNo1k0LaIKcmwtmBIB/Grupprojekt%3A-Webshop?node-id=0%3A1
+
+Kravspec:
+
+Kundkrav
+Skall kunna filtrera bland produkterna för att enklare hitta det som passar mig.
+Skall kunna söka efter produkter
+Skall kunna få reda på mer detaljerad information om produkten.
+Skall se om varan finns i lager för omgående leverans.
+Skall se när varan kommer tillbaka i lager om den ej finns.
+Skall kunna se priset på varan direkt utan att behöva klicka in på produkten.
+Skall se om det är rea och priset är nedsatt och vad orginalpriset vad.
+Skall visa en tydlig bild på produkten 
+Skall se vad det är för modell på skon och namn
+Skall kunna se tillgängliga storlekar 
+Skall kunna köpa produkten
+Skall kunna enkelt kunna öppna min varukorg
+Skall kunna se produkterna i varukorgen
+Skall kunna öka eller minska antalet i varukorgen
+Skall kunna tömma varukorgen och börja om
+
+Våra krav
+Skall kunna bläddra mellan flera bilder
+Sidan / bilderna ska laddas snabbt
+Skall locka kunden till heta erbjudanden
+Skall vara stilren
+Skall vara sportig
+
+Retrospective:
+
+
+
+
