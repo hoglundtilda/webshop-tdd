@@ -5,10 +5,10 @@ import CartProduct from "@/components/CartProduct";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-const shoppingCartItems = ["1", "2", "3", "4"];
+const shoppingCart = ["1", "2", "3", "4"];
 const store = new Vuex.Store({
   state: {
-    shoppingCartItems: Array,
+    shoppingCart: shoppingCart,
   },
 });
 
@@ -19,9 +19,9 @@ describe("CartProduct", () => {
       localVue,
     });
 
-    const expected = shoppingCartItems.length;
-    const actual = wrapper.findAll("li").length;
-    console.log(shoppingCartItems);
+    const expected = shoppingCart.length;
+    const actual = wrapper.findAll("article").length;
+    console.log(wrapper.findAll("article"));
     expect(actual).toBe(expected);
   });
 });
