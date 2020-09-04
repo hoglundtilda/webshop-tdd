@@ -122,7 +122,7 @@ export default {
 
   methods: {
     back() {
-      this.$router.go(-1);
+      this.$router.back();
     },
     addToCart(shoe) {
       this.$store.dispatch("addToCart", shoe);
