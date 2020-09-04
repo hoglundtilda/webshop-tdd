@@ -27,7 +27,8 @@
         <input type="text" class="input" v-model="input" />
         <i class="fas fa-search"></i>
       </div>
-      <button class="filter_button" @click="setFilter">Filtrera</button>
+      <button class="button filter" @click="setFilter">Filtrera</button>
+      <button class="button reset" @click="resetFilter">Reset</button>
     </section>
   </div>
 </template>
@@ -124,6 +125,13 @@ export default {
       }
       //Starta action i store
       this.filterBySize();
+    },
+    resetFilter() {
+      this.input = "";
+      this.price = "Price";
+      this.size = "Size";
+      this.hasFilter = false;
+      this.setFilter();
     },
   },
 };
