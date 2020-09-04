@@ -104,7 +104,7 @@ describe('FilterSearch.vue', () => {
       expected = 1;
 
     // We know there is only one shoe of this kind and since above filters
-    // are working i dont need to test similar functions again.
+    // are working we dont need to test similar functions again.
     await input.setValue('vans');
     await priceSelect.at(0).setSelected();
     await sizeSelect.at(0).setSelected();
