@@ -68,5 +68,4 @@ describe("ShoeInfo.vue", () => {
 
   })
 
-  
 });
