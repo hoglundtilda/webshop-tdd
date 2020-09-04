@@ -32,7 +32,7 @@ describe('FilterSearch.vue', () => {
   it('Should only display products of a certain brand when user enters a brand in input', async () => {
     const filter = wrapper.findComponent(FilterSearch),
       input = filter.find('.input'),
-      filterBtn = filter.find('.filter_button'),
+      filterBtn = filter.find('.filter'),
       products = jsonProducts.products,
       expected = products.filter((product) => {
         const str = product.brand.toLowerCase();
@@ -51,18 +51,18 @@ describe('FilterSearch.vue', () => {
   it('should display products of a certain size when user selects a size-option', async () => {
     const filter = wrapper.findComponent(FilterSearch),
       sizeSelect = filter.find('.size').findAll('option'),
-      filterBtn = filter.find('.filter_button'),
+      filterBtn = filter.find('.filter'),
       products = jsonProducts.products,
       expected = products.filter((product) => {
         for (let i = 0; i < product.sizes.length; i++) {
           let stock = parseInt(product.sizes[i].stock);
-          if (product.sizes[i].size === 43 && stock > 0) {
+          if (product.sizes[i].size === '35' && stock > 0) {
             return product;
           }
         }
       });
 
-    await sizeSelect.at(3).setSelected();
+    await sizeSelect.at(1).setSelected();
     await filterBtn.trigger('click');
     const productsArray = wrapper.findAll('li'),
       actual = productsArray.length;
@@ -74,7 +74,7 @@ describe('FilterSearch.vue', () => {
   it('should display products withing a certain price range', async () => {
     const filter = wrapper.findComponent(FilterSearch),
       priceSelect = filter.find('.price').findAll('option'),
-      filterBtn = filter.find('.filter_button'),
+      filterBtn = filter.find('.filter'),
       products = jsonProducts.products,
       expected = products.filter((product) => {
         if (parseInt(product.price) >= 700 && parseInt(product.price) <= 899) {
@@ -82,11 +82,55 @@ describe('FilterSearch.vue', () => {
         }
       });
 
-    await priceSelect.at(3).setSelected();
+    await priceSelect.at(1).setSelected();
     await filterBtn.trigger('click');
     const productsArray = wrapper.findAll('li'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected.length);
+  });
+
+  it('should return items matching all filters when pressing filter button', async () => {
+    const filter = wrapper.findComponent(FilterSearch),
+      priceSelect = filter.find('.price').findAll('option'),
+      sizeSelect = filter.find('.size').findAll('option'),
+      input = filter.find('.input'),
+      filterBtn = filter.find('.filter'),
+      expected = 1;
+
+    // We know there is only one shoe of this kind and since above filters
+    // are working atm i dont need to test similar functions again.
+    await input.setValue('vans');
+    await priceSelect.at(0).setSelected();
+    await sizeSelect.at(0).setSelected();
+    await filterBtn.trigger('click');
+
+    const productsArray = wrapper.findAll('li'),
+      actual = productsArray.length;
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should display all products (again) from json when reset button is toggled', async () => {
+    const filter = wrapper.findComponent(FilterSearch),
+      priceSelect = filter.find('.price').findAll('option'),
+      sizeSelect = filter.find('.size').findAll('option'),
+      input = filter.find('.input'),
+      filterBtn = filter.find('.filter'),
+      resetBtn = filter.find('.reset'),
+      expected = jsonProducts.products.length;
+
+    // since previous test is working no need to check if array
+    // is updated in this test, we are using the same filters.
+    await input.setValue('vans');
+    await priceSelect.at(0).setSelected();
+    await sizeSelect.at(0).setSelected();
+    await filterBtn.trigger('click');
+    await resetBtn.trigger('click');
+
+    const productsArray = wrapper.findAll('li'),
+      actual = productsArray.length;
+
+    expect(actual).toBe(expected);
   });
 });
