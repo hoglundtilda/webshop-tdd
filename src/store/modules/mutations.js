@@ -16,4 +16,8 @@ export default {
     cartItem.qty = parseInt(value);
     cartItem.totalPrice = parseInt(cartItem.price) * parseInt(cartItem.qty);
   },
+  emptyCart(state, shoppingCart) {
+    shoppingCart = [];
+    state.shoppingCart = shoppingCart;
+  },
 };

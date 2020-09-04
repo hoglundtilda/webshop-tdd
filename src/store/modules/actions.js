@@ -8,4 +8,7 @@ export default {
   updateQty(ctx, product) {
     ctx.commit("updateQty", product);
   },
+  emptyCart(ctx, shoppingCart) {
+    ctx.commit("emptyCart", shoppingCart);
+  },
 };
