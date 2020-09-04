@@ -8,7 +8,7 @@ describe("Products", () => {
     });
 
     it("Should check so you can se the price on rendering", () => {
-        let actual = "1 395,00 kr";
+        let actual = "1395,00 kr";
 
         const price = wrapper
             .findAll(".productPrice")
@@ -18,7 +18,7 @@ describe("Products", () => {
         expect(actual).toBe(price);
     });
     it("Should check so you can se the name fo the manufacturer on rendering", () => {
-        let actual = "Jordan -";
+        let actual = "Jordan";
 
         const manufacturer = wrapper
             .findAll(".productBrand")
@@ -31,7 +31,7 @@ describe("Products", () => {
         let actual = "UA OLD SKOOL";
 
         const model = wrapper
-            .find(".productModel")
+            .findAll(".productModel")
             .at(9)
             .text();
         console.log(model);
