@@ -46,11 +46,15 @@ export default {
     },
     updateQty(e, product) {
       if (e.target.value !== "") {
-        let value = e.target.value;
-        this.$store.dispatch("updateQty", {
-          product: product,
-          value: value,
-        });
+        if (e.target.value == 0 || e.target.value == "0") {
+          this.removeFromCart(product);
+        } else {
+          let value = e.target.value;
+          this.$store.dispatch("updateQty", {
+            product: product,
+            value: value,
+          });
+        }
       } else {
         return;
       }

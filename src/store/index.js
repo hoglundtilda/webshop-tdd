@@ -23,6 +23,7 @@ export default new Vuex.Store({
     updateQty(state, product) {
       console.log(state);
       let value = product.value;
+
       let cartItem = product.product;
       cartItem.qty = parseInt(value);
       cartItem.totalPrice = parseInt(cartItem.price) * parseInt(cartItem.qty);
