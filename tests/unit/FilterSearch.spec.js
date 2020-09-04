@@ -2,10 +2,14 @@ import { mount } from '@vue/test-utils';
 import FilterSearch from '@/components/FilterSearch.vue';
 import Products from '@/components/Products.vue';
 import jsonProducts from '@/assets/products.json';
-//Searchfield
-//1. Sökfältet skall vara "" vid rendering
-//2. Testa att input filtrerar skorna korrekt
-//3.
+
+// Tester rörande filtrerings komponenten
+//1. Inputfält och select-options ska ha särskilt värde vid rendering
+//2. När användaren filtrerar efter input ska skorna filtreras efter märke
+//3. När användaren väljer en storlek i options ska bara skor med den storleken i lager visas
+//4. När användaren väljer ett prisintervall i options ska skor som matchar priset visas
+//5. När användaren väljer flera filter ska skor som matchar dessa visas
+//6. När användaren har filtrerat och sedan trycker på reset ska alla produkter visas igen utan filter
 
 describe('FilterSearch.vue', () => {
   let wrapper;
@@ -41,6 +45,7 @@ describe('FilterSearch.vue', () => {
 
     await input.setValue('vans');
     await filterBtn.trigger('click');
+
     const productsArray = wrapper.findAll('li'),
       actual = productsArray.length;
 
