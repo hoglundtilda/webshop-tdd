@@ -27,7 +27,6 @@ test('check so that action is called correctly on keyup', async () => {
 
   let numberOfCartItems = wrapper.find('span');
   numberOfCartItems = parseInt(numberOfCartItems.text());
-  console.log(numberOfCartItems);
 
   expect(numberOfCartItems).toBe(expected);
 });
