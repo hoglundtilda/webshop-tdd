@@ -123,10 +123,5 @@ div {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
-  border-radius: 5px;
-}
-
-.shoe_information {
 }
 </style>

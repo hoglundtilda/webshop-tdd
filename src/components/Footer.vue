@@ -84,6 +84,7 @@ li {
 }
 
 .info_title {
+  margin-bottom: 10px;
   font-size: 1rem;
 }
 

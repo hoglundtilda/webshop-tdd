@@ -18,6 +18,7 @@
       <p>{{totalPrice}}</p>
     </div>
     <button class="checkout_button">VIDARE TILL BETALNING</button>
+    <button @click="emptyCart" class="empty_cart">TÖM VARUKORGEN</button>
     <p class="delivery_cost">Fraktfritt om du handlar för mer än 1000:-</p>
   </section>
 </template>
@@ -30,10 +31,12 @@ export default {
   },
   computed: {
     ...mapGetters(["totalPrice"]),
-    ...mapState({
-      deliveryCost: (state) => state.deliveryCost,
-      freeDeliveryCost: (state) => state.freeDeliveryCost,
-    }),
+    ...mapState(["freeDeliveryCost", "deliveryCost"]),
+  },
+  methods: {
+    emptyCart() {
+      this.$store.dispatch("emptyCart");
+    },
   },
 };
 </script>
@@ -78,5 +81,16 @@ div {
 
 .delivery_cost {
   font-size: 0.7rem;
+}
+
+.empty_cart {
+  color: $dark !important;
+  width: 100%;
+  margin-top: 1rem;
+  background-color: $color;
+  color: $white;
+  padding: 1rem 0rem;
+  border: none;
+  outline: none;
 }
 </style>
