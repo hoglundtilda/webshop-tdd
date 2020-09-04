@@ -2,7 +2,7 @@
   <div class="nav">
     <ul>
       <p>Om</p>
-      <p>Nyhter</p>
+      <p>Nyheter</p>
       <p>Kollektion</p>
       <p>Rea</p>
     </ul>

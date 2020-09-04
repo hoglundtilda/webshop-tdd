@@ -116,10 +116,7 @@ export default {
       }
     },
     shoeToCart() {
-      return Object.assign({}, this.shoe, {
-        sizes: this.selectedOption.size,
-        qty: 1,
-      });
+      return { ...this.shoe, sizes: this.selectedOption.size, qty: 1 };
     },
   },
 
@@ -171,9 +168,13 @@ export default {
   width: 10rem;
   height: 13rem;
   margin-right: 2rem;
+  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  border-radius: 5px;
 }
 .bigImg {
   height: 80vh;
+  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  border-radius: 5px;
 }
 
 .moms {

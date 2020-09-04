@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    deliveryCost: 69,
+    freeDeliveryCost: 0,
     shoppingCart: [],
     cartItems: 2,
   },
   mutations: {
     addToCart(state, shoe) {
+      shoe.totalPrice = parseInt(shoe.price) * parseInt(shoe.qty);
+
       state.shoppingCart.push(shoe);
     },
     removeFromCart(state, product) {
@@ -21,6 +25,7 @@ export default new Vuex.Store({
       let value = product.value;
       let cartItem = product.product;
       cartItem.qty = parseInt(value);
+      cartItem.totalPrice = parseInt(cartItem.price) * parseInt(cartItem.qty);
     },
   },
   actions: {

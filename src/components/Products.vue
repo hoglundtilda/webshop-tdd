@@ -2,7 +2,7 @@
   <div class="wrapper">
     <FilterSearch @filteredProducts="filteredProducts" @hasFilter="hasFilter" />
 
-    <ul class="productUl">
+    <ul id="products" class="productUl">
       <li
         v-for="(product, index) in renderProducts"
         :key="index"

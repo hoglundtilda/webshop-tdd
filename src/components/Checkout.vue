@@ -1,34 +1,39 @@
 <template>
   <section class="checkout">
     <div>
-      <h3 class="total_title">Totalsumma:</h3>
-      <p>{{totalPrice + 69}}:-</p>
+      <h5 class="total_title">Totalsumma</h5>
     </div>
     <div>
       <p>Varukorg:</p>
-      <p>{{totalPrice}}</p>
+      <p>{{totalPrice}}:-</p>
     </div>
     <div>
       <p>Frakt:</p>
-      <p>69:-</p>
+      <p v-if="totalPrice < 1000">{{deliveryCost}}</p>
+      <p v-else>{{freeDeliveryCost}}</p>
     </div>
     <div class="divider"></div>
     <div>
       <p>Total (inkl moms):</p>
-      <p>{{totalPrice + 69}}</p>
+      <p>{{totalPrice}}</p>
     </div>
     <button class="checkout_button">VIDARE TILL BETALNING</button>
+    <p class="delivery_cost">Fraktfritt om du handlar för mer än 1000:-</p>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {};
   },
   computed: {
     ...mapGetters(["totalPrice"]),
+    ...mapState({
+      deliveryCost: (state) => state.deliveryCost,
+      freeDeliveryCost: (state) => state.freeDeliveryCost,
+    }),
   },
 };
 </script>
@@ -60,6 +65,7 @@ export default {
 }
 
 .total_title {
+  font-size: 2rem;
   font-weight: 900;
 }
 
@@ -68,5 +74,9 @@ div {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.delivery_cost {
+  font-size: 0.7rem;
 }
 </style>

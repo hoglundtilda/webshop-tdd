@@ -21,7 +21,7 @@
           :value="product.qty"
           @input="updateQty($event, product)"
         />
-        <p class="price">{{parseInt(product.price) * product.qty}}:-</p>
+        <p class="price">{{product.totalPrice}}:-</p>
       </div>
     </article>
   </section>
@@ -38,9 +38,7 @@ export default {
       products: (state) => state.shoppingCart,
     }),
     ...mapGetters(["totalPrice"]),
-    totalPrice(product) {
-      console.log(product);
-    },
+    totalPrice() {},
   },
   methods: {
     removeFromCart(product) {
@@ -64,15 +62,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .cart_item {
-  margin-bottom: 1rem;
-  font-weight: 900;
-  max-height: auto;
+  font-weight: 500;
   padding: 1rem;
-  min-width: 500px;
   display: grid;
-
+  margin-bottom: 1rem;
   justify-items: center;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: repeat(3, 20%);
+  grid-template-rows: 150px;
   background-color: $white;
 }
 
@@ -84,12 +80,14 @@ export default {
 div {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 }
 
 .cartitem_information {
   display: flex;
   justify-content: space-between;
+  margin-left: auto;
 }
 
 .price {
@@ -99,6 +97,7 @@ div {
 }
 
 .product_title {
+  justify-self: flex-start;
   font-weight: 900;
   font-size: 1.2rem;
 }
@@ -112,11 +111,18 @@ div {
 }
 
 .cart_item p {
+  font-size: 0.8rem;
   color: #998f8f;
 }
 
 .product_image {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  border-radius: 5px;
+}
+
+.shoe_information {
 }
 </style>

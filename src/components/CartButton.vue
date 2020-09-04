@@ -1,19 +1,20 @@
 <template>
   <div @click="toCart" class="cart_button">
     <i class="fas fa-shopping-cart fa-2x" @click="toCart"></i>
-    <span>{{cartItems}}</span>
+    <span>{{shoppingCart}}</span>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data: () => {
     return {};
   },
   computed: {
-    cartItems() {
-      return this.$store.state.shoppingCart.length;
-    },
+    ...mapState({
+      shoppingCart: (state) => state.shoppingCart.length,
+    }),
   },
   methods: {
     toCart() {
