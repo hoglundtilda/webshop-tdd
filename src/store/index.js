@@ -1,6 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import setFilter from "@/store/filter.js";
+import Vue from 'vue';
+import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -31,13 +30,13 @@ export default new Vuex.Store({
   },
   actions: {
     addToCart(ctx, shoe) {
-      ctx.commit("addToCart", shoe);
+      ctx.commit('addToCart', shoe);
     },
     removeFromCart(ctx, product) {
-      ctx.commit("removeFromCart", product);
+      ctx.commit('removeFromCart', product);
     },
     updateQty(ctx, product) {
-      ctx.commit("updateQty", product);
+      ctx.commit('updateQty', product);
     },
   },
   getters: {
@@ -50,5 +49,5 @@ export default new Vuex.Store({
       }, 0);
     },
   },
-  modules: { setFilter },
+  modules: {},
 });
