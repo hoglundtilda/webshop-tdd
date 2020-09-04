@@ -3,13 +3,8 @@ import Nav from '@/components/Nav.vue';
 import CartButton from '@/components/CartButton.vue';
 import Vuex from 'vuex';
 
-const localVue = createLocalVue().use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-    cartItems: 1,
-  },
-});
+//1. CartButton ska visas vid render
+//2. CartButton ska visa antalet produkter i varukorgen i ett span element som är kopplad till store
 
 it('should display Cart component when rendered', () => {
   const wrapper = shallowMount(Nav),
@@ -18,11 +13,21 @@ it('should display Cart component when rendered', () => {
   expect(cart.exists()).toBe(true);
 });
 
-it('should display the value from store in CartButton component', () => {
-  const wrapper = shallowMount(CartButton, {
-    store,
-    localVue,
-  });
+test('check so that action is called correctly on keyup', async () => {
+  const localVue = createLocalVue().use(Vuex),
+    state = {
+      shoppingCart: ['1', '2', '3'],
+    },
+    store = new Vuex.Store({ state }),
+    wrapper = shallowMount(CartButton, {
+      store,
+      localVue,
+    }),
+    expected = state.shoppingCart.length;
 
-  expect(wrapper.find('span').text()).toBe('1');
+  let numberOfCartItems = wrapper.find('span');
+  numberOfCartItems = parseInt(numberOfCartItems.text());
+  console.log(numberOfCartItems);
+
+  expect(numberOfCartItems).toBe(expected);
 });
