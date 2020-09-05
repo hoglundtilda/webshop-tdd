@@ -34,7 +34,7 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select name="sizes" class="sizes" v-model="selectedOption">
+        <select name="sizes" class="sizes" v-model="selectedOption" @change="checkInStock($event)">
           <option disabled hidden value class="options">VÄLJ STORLEK</option>
           <option
             :value="option"
@@ -49,6 +49,10 @@
           :disabled="selectedOption.stock <= 0"
           :class="selectedOption.stock <= 0 || selectedOption.stock == 0 ? 'buttonDisabled': 'addToCart'"
         >LÄGG I VARUKORGEN</button>
+        <p
+          v-if="this.OutOfStockMessage"
+          class="outOfStockMessage"
+        >Ej i lager, försök en annan gång din påse</p>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>
@@ -89,6 +93,7 @@ export default {
     return {
       selectedOption: "",
       img: "",
+      OutOfStockMessage: false,
     };
   },
   computed: {
@@ -125,10 +130,19 @@ export default {
       this.$router.back();
     },
     addToCart(shoe) {
-      this.$store.dispatch("addToCart", shoe);
+      if (parseInt(this.selectedOption.stock) > 0) {
+        this.$store.dispatch("addToCart", shoe);
+      }
     },
     switchImage(image) {
       this.img = image;
+    },
+    checkInStock() {
+      if (this.selectedOption.stock === "0") {
+        this.OutOfStockMessage = true;
+      } else {
+        this.OutOfStockMessage = false;
+      }
     },
   },
 };
@@ -221,12 +235,16 @@ h3 {
 
 .buttonDisabled {
   background-color: $red;
-  cursor: not-allowed;
+}
+
+.outOfStockMessage {
+  color: $red;
+  margin: 2em 0.5em;
 }
 .goodToKnow {
   display: flex;
   width: 35rem;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 </style>
