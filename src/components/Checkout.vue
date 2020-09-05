@@ -15,7 +15,8 @@
     <div class="divider"></div>
     <div>
       <p>Total (inkl moms):</p>
-      <p>{{totalPrice}}</p>
+      <p v-if="totalPrice < 1000">{{totalPriceWithDeliveryCost}}</p>
+      <p v-else>{{totalPrice}}</p>
     </div>
     <button class="checkout_button">VIDARE TILL BETALNING</button>
     <button @click="emptyCart" class="empty_cart">TÖM VARUKORGEN</button>
@@ -30,12 +31,12 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["totalPrice"]),
-    ...mapState(["freeDeliveryCost", "deliveryCost"]),
+    ...mapGetters(["totalPrice", "totalPriceWithDeliveryCost"]),
+    ...mapState(["freeDeliveryCost", "deliveryCost", "shoppingCart"]),
   },
   methods: {
     emptyCart() {
-      this.$store.dispatch("emptyCart");
+      this.$store.dispatch("emptyCart", this.shoppingCart);
     },
   },
 };

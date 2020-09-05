@@ -1,60 +1,71 @@
-import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
-import CartButton from '@/components/CartButton.vue';
-import Products from '@/components/Products.vue';
-import ShoeInfo from '@/views/ShoeInfo.vue';
-import Vuex from 'vuex';
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import routes from '@/router/routes.js';
-import App from '@/App.vue';
-import jsonProducts from '@/assets/products.json';
+import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
+import CartButton from "@/components/CartButton.vue";
+import ShoeInfo from "@/views/ShoeInfo.vue";
+import jsonProducts from "@/assets/products.json";
+import Vuex from "vuex";
+import Vue from "vue";
 
-// Vi har inte kunnat skriva ett grönt test för att testa att man kan lägga till en produkt.
-// Det har varit svårt att förstå logiken med store och router eftersom vi inte gått igenom det.
-// Därför vet vi inte best-practice hur man ska genomföra dessa tester.
-// ShoeInfo view är beroende av props och params.
-// Vi har försökt att sätta upp dessa men property: shoe blir ändå undefined i testet
+// Because it was harder than we thought to test vuex this test is written when view/component already is built.
+// Therefore the test might be more advanced than it should have been.
+// But we have learned a lot about testing vuex and are happy that we got it green!
 
-//1. När användaren klickar på lägg till i varukorgen och storleken finns ska dispatch till store köras
+const localVue = createLocalVue().use(Vuex);
+Vue.use(Vuex);
 
-/* test('should update store-state shoppingCart when user add a shoe from ShoeInfo', async () => {
-  const cartButtonWrapper = shallowMount(CartButton),
-    
-  let numberOfCartItems = cartButtonWrapper.find('span');
-  numberOfCartItems = parseInt(numberOfCartItems.text());
+describe("ShoeInfo.vue", () => {
+  // because ShoeInfo relies on params: mock route, with params used in routes.js
+  // pass props to get the right shoe through computed properties
 
-  expect(numberOfCartItems).toBe(1);
-}); */
-
-/* test('check so that action is called correctly on when user toggle addToCart, async () => {
-  Vue.use(Vuex);
-  const actions = {
-    addToCart: jest.fn(),
-  };
-
-  const store = new Vuex.Store({ actions });
-
+  const shoe = "AD115O0OM-G11";
   const $route = {
-    path: '/shoeinfo/0003',
+    path: `/shoeinfo/${shoe}`,
   };
+  let actions = { addToCart: jest.fn() };
+  let store = new Vuex.Store({ actions });
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallowMount(ShoeInfo, {
+      mocks: {
+        $route: { params: { shoe } },
+      },
+      propsData: {
+        products: jsonProducts.products,
+      },
+      store,
+      localVue,
+    });
 
-  const wrapper = shallowMount(ShoeInfo, {
-    mocks: {
-      $route,
-    },
-    propsData: {
-      products: jsonProducts.products,
-    },
-    store,
+    // goto "/shoeinfo/artikelnummer"
+    wrapper.vm.$route.path;
   });
 
-  wrapper.vm.$route.path; 
+  it("should display correct shoe when router push to shoeinfo/params", () => {
+    const shoe_artikelnummer = wrapper.find(".article_number"),
+      actual = shoe_artikelnummer.text(),
+      expected = `Artikelnummer: ${shoe}`;
 
-   const addButton = wrapper.find('.addToCart'),
-    selectSize = wrapper.findAll('.options');
+    expect(actual).toBe(expected);
+  });
 
-  await selectSize.at(1).setSelected();
-  await addButton.trigger('click'); 
+  test("addToCart action should be called when user adds a product to cart", async () => {
+    const addButton = wrapper.find(".addToCart"),
+      selectSize = wrapper.findAll(".options");
 
-  expect(actions.addToCart).toHaveBeenCalled();
-}); */
+    await selectSize.at(3).setSelected();
+    await addButton.trigger("click");
+
+    expect(actions.addToCart).toHaveBeenCalled();
+  });
+
+  it("should display a message when selected size is out of stock", async () => {
+   const selectSize = wrapper.findAll(".options");
+
+  await selectSize.at(4).setSelected();
+
+  const message = wrapper.find(".outOfStockMessage");
+
+  expect(message.exists()).toBe(true)
+
+  })
+
+});

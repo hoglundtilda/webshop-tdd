@@ -34,7 +34,7 @@
           <span class="moms">inkl moms</span>
         </h3>
         <h5>Färg: {{ shoe.color }}</h5>
-        <select name="sizes" class="sizes" v-model="selectedOption">
+        <select name="sizes" class="sizes" v-model="selectedOption" @change="checkInStock($event)">
           <option disabled hidden value class="options">VÄLJ STORLEK</option>
           <option
             :value="option"
@@ -49,6 +49,10 @@
           :disabled="selectedOption.stock <= 0"
           :class="selectedOption.stock <= 0 || selectedOption.stock == 0 ? 'buttonDisabled': 'addToCart'"
         >LÄGG I VARUKORGEN</button>
+        <p
+          v-if="this.OutOfStockMessage"
+          class="outOfStockMessage"
+        >Ej i lager, försök en annan gång din påse</p>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>
@@ -64,7 +68,7 @@
             <p>Klack/Sula: {{ shoe.productinfo.Klack }}</p>
             <p>Förslutning: {{ shoe.productinfo.Förslutning }}</p>
             <p>Mönster: {{ shoe.productinfo.Mönster }}</p>
-            <p>Artikelnummer: {{ shoe.productinfo.Artikelnummer }}</p>
+            <p class="article_number">Artikelnummer: {{ shoe.productinfo.Artikelnummer }}</p>
           </div>
         </section>
       </section>
@@ -89,6 +93,7 @@ export default {
     return {
       selectedOption: "",
       img: "",
+      OutOfStockMessage: false,
     };
   },
   computed: {
@@ -100,7 +105,7 @@ export default {
     },
     shoe() {
       const shoe = this.products.filter(
-        (shoe) => shoe.id == this.$route.params.shoe
+        (shoe) => shoe.productinfo.Artikelnummer == this.$route.params.shoe
       )[0];
       this.img = shoe.images[0];
       return shoe;
@@ -108,7 +113,7 @@ export default {
     image() {
       if (this.img === "") {
         const shoe = this.products.filter(
-          (shoe) => shoe.id == this.$route.params.shoe
+          (shoe) => shoe.productinfo.Artikelnummer == this.$route.params.shoe
         )[0];
         return shoe.images[0];
       } else {
@@ -125,11 +130,19 @@ export default {
       this.$router.back();
     },
     addToCart(shoe) {
-      this.$store.dispatch("addToCart", shoe);
-      console.log(this.selectedOption);
+      if (parseInt(this.selectedOption.stock) > 0) {
+        this.$store.dispatch("addToCart", shoe);
+      }
     },
     switchImage(image) {
       this.img = image;
+    },
+    checkInStock() {
+      if (this.selectedOption.stock === "0") {
+        this.OutOfStockMessage = true;
+      } else {
+        this.OutOfStockMessage = false;
+      }
     },
   },
 };
@@ -222,12 +235,16 @@ h3 {
 
 .buttonDisabled {
   background-color: $red;
-  cursor: not-allowed;
+}
+
+.outOfStockMessage {
+  color: $red;
+  margin: 2em 0.5em;
 }
 .goodToKnow {
   display: flex;
   width: 35rem;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 </style>
