@@ -18,10 +18,9 @@
       <select id="group_price" class="price" v-model="price">
         <option hidden selected value="Price">Price</option>
         <option value="700-899">700-899</option>
-        <option value="900-1099">900-1099</option>
-        <option value="1100-1299">1100-1299</option>
-        <option value="1300-1499">1300-1499</option>
-        <option value="1500-10000">1500+</option>
+        <option value="900-1199">900-1199</option>
+        <option value="1200-1699">1200-1699</option>
+        <option value="1700-10000">1700+</option>
       </select>
       <div class="searchfieled">
         <input
