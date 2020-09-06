@@ -18,7 +18,7 @@
       <p v-if="totalPrice < 1000">{{totalPriceWithDeliveryCost}}</p>
       <p v-else>{{totalPrice}}</p>
     </div>
-    <button class="checkout_button">VIDARE TILL BETALNING</button>
+    <button @click="toPayment" class="checkout_button">VIDARE TILL BETALNING</button>
     <button @click="emptyCart" class="empty_cart">TÖM VARUKORGEN</button>
     <p class="delivery_cost">Fraktfritt om du handlar för mer än 1000:-</p>
   </section>
@@ -36,7 +36,10 @@ export default {
   },
   methods: {
     emptyCart() {
-      this.$store.dispatch("emptyCart", this.shoppingCart);
+      this.$store.dispatch("emptyCart");
+    },
+    toPayment() {
+      this.$router.push("/Payment");
     },
   },
 };

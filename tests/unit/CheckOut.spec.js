@@ -1,7 +1,8 @@
 import getters from "@/store/modules/getters.js";
 import actions from "@/store/modules/actions.js";
+import mutations from "@/store/modules/mutations.js";
 
-test("Returns the total price of all the products in the shoppingcart", () => {
+test("Returns the total price of all the products in the shoppingcart with free shipping", () => {
   const state = {
     shoppingCart: [
       { qty: 2, price: 895 },
@@ -13,20 +14,40 @@ test("Returns the total price of all the products in the shoppingcart", () => {
   expect(result).toBe(16670);
 });
 
-test('Should remove all products from shoppingCart when clicked on "Töm varukorgen', () => {});
+test("Returns the total price of all the products in the shoppingcart with deliverycost", () => {
+  const state = {
+    shoppingCart: [
+      { qty: 2, price: 895 },
+      { qty: 1, price: 1395 },
+      { qty: 3, price: 4495 },
+    ],
+  };
+  const result = getters.totalPriceWithDeliveryCost(state);
+  expect(result).toBe(16739);
+});
 
-describe("EmptyCart", () => {
-  it("Should remove products from the cart", async () => {
+describe("", () => {
+  it("Should test the dispatch is being called with correct params", async () => {
     const commit = jest.fn();
+    const ctx = { commit };
+    await actions.emptyCart(ctx);
+    expect(commit).toHaveBeenCalledWith("emptyCart");
+  });
+});
+
+describe("Mutations", () => {
+  it("Should remove all the products from the shoppingCart", () => {
     const state = {
       shoppingCart: [
         { qty: 2, price: 895 },
-        { qty: 1, price: 1395 },
-        { qty: 3, price: 4495 },
+        { qty: 2, price: 895 },
+        { qty: 2, price: 895 },
+        { qty: 2, price: 895 },
+        { qty: 2, price: 895 },
+        { qty: 2, price: 895 },
       ],
     };
-    await actions.emptyCart({ commit }, state.shoppingCart);
-
-    expect(commit).toHaveBeenCalledWith("emptyCart", );
+    mutations.emptyCart(state);
+    expect(state.shoppingCart).toStrictEqual([]);
   });
 });

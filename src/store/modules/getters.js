@@ -13,6 +13,6 @@ export default {
     });
     return items.reduce(function(prev, current) {
       return prev + current;
-    }, state.deliveryCost);
+    }, 69);
   },
 };
