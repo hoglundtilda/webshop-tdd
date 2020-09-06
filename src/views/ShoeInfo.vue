@@ -73,11 +73,13 @@
         </section>
       </section>
     </section>
+    <Products />
     <Footer />
   </div>
 </template>
 
 <script>
+import Products from "@/components/Products";
 import Footer from "@/components/Footer.vue";
 import CartButton from "@/components/CartButton.vue";
 export default {
@@ -88,6 +90,7 @@ export default {
   components: {
     Footer,
     CartButton,
+    Products,
   },
   data: () => {
     return {
