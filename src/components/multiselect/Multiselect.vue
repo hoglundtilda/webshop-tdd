@@ -453,10 +453,13 @@ fieldset[disabled] .multiselect {
   text-align: left;
   color: $light;
   font-size: 0.9em;
+  font-family: $font;
 }
 
 .multiselect * {
   box-sizing: border-box;
+  font-family: $font;
+  letter-spacing: 1px;
 }
 
 .multiselect:focus {
@@ -545,6 +548,7 @@ fieldset[disabled] .multiselect {
   border: 1px solid #e8e8e8;
   background: #fff;
   font-size: 0.9em;
+  font-family: $font;
 }
 
 .multiselect__tag {
