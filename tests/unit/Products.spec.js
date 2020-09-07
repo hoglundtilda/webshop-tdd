@@ -29,7 +29,7 @@ describe("Products.vue", () => {
 
     // Visas alla produkter som finns i json när products renderas?
     it("Should display all products from json when rendered", () => {
-        const productsArray = wrapper.findAll("li"),
+        const productsArray = wrapper.findAll(".product"),
             actual = productsArray.length,
             expected = productsJSON.products.length;
         //console.log(productsJSON.products.length);
@@ -43,7 +43,7 @@ describe("Products.vue", () => {
             .findAll(".productPrice")
             .at(1)
             .text();
-        console.log(price);
+
         expect(actual).toBe(price);
     });
     it("Should check so you can se the name fo the manufacturer on rendering", () => {
@@ -53,17 +53,23 @@ describe("Products.vue", () => {
             .findAll(".productBrand")
             .at(4)
             .text();
-        console.log(manufacturer);
+
         expect(actual).toBe(manufacturer);
     });
     it("Should check so you can se the name fo the model of the shoes on rendering", () => {
         let actual = "UA OLD SKOOL";
-
         const model = wrapper
             .findAll(".productModel")
             .at(9)
             .text();
-        console.log(model);
         expect(actual).toBe(model);
     });
+
+    it("Should check that there are four products on sale category", () => {
+        let saleArray = wrapper.findAll(".product_sale");
+        let actual = saleArray.length;
+        expect(actual).toBe(4)
+    })
+
+
 });

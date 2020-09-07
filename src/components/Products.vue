@@ -26,7 +26,12 @@
     </div>
     <h1 class="headline_rea">Reaprodukter</h1>
     <ul class="productUl">
-      <li v-for="(sales, index) in sale" :key="index" class="product" @click="showShoe(sales.id)">
+      <li
+        v-for="(sales, index) in sale"
+        :key="index"
+        class="product_sale"
+        @click="showShoe(sales.id)"
+      >
         <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
         <div class="info">
           <span class="salePercent">{{sales.percent}}</span>
@@ -100,8 +105,8 @@ export default {
 .productUl {
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem 0;
-  padding: 0 10em;
+  margin: 2rem 5rem;
+
   justify-content: space-between;
 }
 
@@ -109,7 +114,8 @@ export default {
   text-decoration: line-through;
 }
 
-.product {
+.product,
+.product_sale {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
