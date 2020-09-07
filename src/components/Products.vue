@@ -1,28 +1,30 @@
 <template>
   <div class="wrapper">
     <FilterSearch @filteredProducts="filteredProducts" @hasFilter="hasFilter" />
+    <div class="product_wrapper">
+      <ul id="products" class="productUl">
+        <li
+          v-for="(product, index) in renderProducts"
+          :key="index"
+          @click="showShoe(product.id)"
+          class="product"
+        >
+          <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
 
-    <ul id="products" class="productUl">
-      <li
-        v-for="(product, index) in renderProducts"
-        :key="index"
-        @click="showShoe(product.id)"
-        class="product"
-      >
-        <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
+          <div class="info">
+            <span class="salePercent">{{product.percent}}</span>
+            <div class="productPrice">
+              <p :class="[{lineThru : product.sale}]">{{ product.price }} kr</p>
 
-        <div class="info">
-          <span class="salePercent">{{product.percent}}</span>
-          <p class="productPrice">
-            {{ product.price }} kr
-            <span class="salePrice">{{product.sale }}</span>
-          </p>
-          <p class="productBrand">{{ product.brand }}</p>
-          <p class="productModel">{{ product.name }}</p>
-        </div>
-      </li>
-    </ul>
-    <h1>Reaprodukter</h1>
+              <p v-if="product.sale" class="salePrice">{{product.sale }} kr</p>
+            </div>
+            <p class="productBrand">{{ product.brand }}</p>
+            <p class="productModel">{{ product.name }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <h1 class="headline_rea">Reaprodukter</h1>
     <ul class="productUl">
       <li v-for="(sales, index) in sale" :key="index" class="product" @click="showShoe(sales.id)">
         <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
@@ -84,20 +86,37 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .product_wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .productUl {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin: 2rem 0;
+  padding: 0 10em;
+  justify-content: space-between;
+}
+
+.lineThru {
+  text-decoration: line-through;
 }
 
 .product {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   width: 14rem;
   margin: 2rem;
   height: 25rem;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  box-shadow: 3px 10px 17px 1px rgba(136, 136, 136, 0.329);
   border-radius: 2px;
 }
 
@@ -138,6 +157,10 @@ export default {
   margin-top: -3rem;
   margin-left: 1rem;
   font-size: 1rem;
+}
+
+.headline_rea {
+  text-align: center;
 }
 
 .salePrice {

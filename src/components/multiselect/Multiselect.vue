@@ -623,7 +623,7 @@ fieldset[disabled] .multiselect {
   width: 40px;
   height: 38px;
   right: 1px;
-  top: 1px;
+  top: -4px;
   padding: 4px 8px;
   margin: 0;
   text-decoration: none;
