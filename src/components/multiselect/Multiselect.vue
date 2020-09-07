@@ -704,7 +704,7 @@ fieldset[disabled] .multiselect {
   line-height: 16px;
   text-decoration: none;
   text-transform: none;
-  vertical-align: middle;
+
   position: relative;
   cursor: pointer;
   white-space: nowrap;

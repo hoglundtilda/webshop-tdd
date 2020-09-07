@@ -1,7 +1,5 @@
 export default {
   addToCart(state, shoe) {
-    shoe.totalPrice = parseInt(shoe.price) * parseInt(shoe.qty);
-
     state.shoppingCart.push(shoe);
   },
   removeFromCart(state, product) {
@@ -24,7 +22,7 @@ export default {
     state.sendingOrder = value;
   },
   generateOrderNr(state) {
-    let letters = ["X", "Y", "Z"];
+    let letters = ['X', 'Y', 'Z'];
     state.orderNumber = `AB${Date.now()}${
       letters[Math.floor(Math.random() * letters.length)]
     }`;
