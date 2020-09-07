@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <h1 class="headline_rea">Reaprodukter</h1>
+    <h1 ref="rea" class="headline_rea">Reaprodukter</h1>
     <ul class="productUl">
       <li
         v-for="(sales, index) in sale"
