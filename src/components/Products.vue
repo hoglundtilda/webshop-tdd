@@ -9,14 +9,20 @@
           @click="showShoe(product.id)"
           class="product"
         >
-          <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
+          <img
+            :src="require(`../assets/img/${product.images[0]}`)"
+            alt
+            class="shoeImg"
+          />
 
           <div class="info">
-            <span class="salePercent">{{product.percent}}</span>
+            <span class="salePercent">{{ product.percent }}</span>
             <div class="productPrice">
-              <p :class="[{lineThru : product.sale}]">{{ product.price }} kr</p>
+              <p :class="[{ lineThru: product.sale }]">
+                {{ product.price }} kr
+              </p>
 
-              <p v-if="product.sale" class="salePrice">{{product.sale }} kr</p>
+              <p v-if="product.sale" class="salePrice">{{ product.sale }} kr</p>
             </div>
             <p class="productBrand">{{ product.brand }}</p>
             <p class="productModel">{{ product.name }}</p>
@@ -24,6 +30,7 @@
         </li>
       </ul>
     </div>
+
     <h1 ref="rea" class="headline_rea">Reaprodukter</h1>
     <ul class="productUl">
       <li
@@ -32,15 +39,19 @@
         class="product_sale"
         @click="showShoe(sales.id)"
       >
-        <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
+        <img
+          :src="require(`../assets/img/${sales.images[0]}`)"
+          alt
+          class="shoeImg"
+        />
         <div class="info">
-          <span class="salePercent">{{sales.percent}}</span>
+          <span class="salePercent">{{ sales.percent }}</span>
           <p class="productPrice salePrice">
-            {{sales.sale}}
-            <span class="oldPrice">{{sales.price}} kr</span>
+            {{ sales.sale }}
+            <span class="oldPrice">{{ sales.price }} kr</span>
           </p>
-          <p class="productBrand">{{sales.brand}}</p>
-          <p class="productModel">{{sales.name}}</p>
+          <p class="productBrand">{{ sales.brand }}</p>
+          <p class="productModel">{{ sales.name }}</p>
         </div>
       </li>
     </ul>

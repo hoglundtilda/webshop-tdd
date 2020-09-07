@@ -21,7 +21,7 @@ describe("Products.vue", () => {
     });
 
     // Visas filter/search komponenten när products renderas?
-    it("Should display search/filter component when rendered", () => {
+    it("Should display SearchFilter component when rendered", () => {
         const filter = wrapper.findComponent(FilterSearch);
 
         expect(filter.exists()).toBe(true);
@@ -32,11 +32,10 @@ describe("Products.vue", () => {
         const productsArray = wrapper.findAll(".product"),
             actual = productsArray.length,
             expected = productsJSON.products.length;
-        //console.log(productsJSON.products.length);
 
         expect(actual).toBe(expected);
     });
-    it("Should check so you can se the price on rendering", () => {
+    it("Price is displayed on products when render", () => {
         let actual = "1395,00 kr";
 
         const price = wrapper
@@ -46,7 +45,7 @@ describe("Products.vue", () => {
 
         expect(actual).toBe(price);
     });
-    it("Should check so you can se the name fo the manufacturer on rendering", () => {
+    it("Brand of the shoe is displayed on product when render", () => {
         let actual = "Jordan";
 
         const manufacturer = wrapper
@@ -56,7 +55,7 @@ describe("Products.vue", () => {
 
         expect(actual).toBe(manufacturer);
     });
-    it("Should check so you can se the name fo the model of the shoes on rendering", () => {
+    it("Model name is displayed on the product when render", () => {
         let actual = "UA OLD SKOOL";
         const model = wrapper
             .findAll(".productModel")
@@ -65,11 +64,30 @@ describe("Products.vue", () => {
         expect(actual).toBe(model);
     });
 
-    it("Should check that there are four products on sale category", () => {
+    it("Sale section should only contain products that is on sale", () => {
         let saleArray = wrapper.findAll(".product_sale");
-        let actual = saleArray.length;
-        expect(actual).toBe(4)
-    })
 
+        const products = productsJSON.products;
+        const productsOnSale = products.filter((product) => {
+            if (product.sale) {
+                return product;
+            }
+        });
+        let checkedItems = [];
+        for (let i = 0; i < saleArray.length; i++) {
+            if (
+                saleArray
+                .at(i)
+                .text()
+                .includes("%")
+            ) {
+                checkedItems.push(saleArray.at(i));
+            }
+        }
 
+        const expected = productsOnSale.length;
+        const actual = checkedItems.length;
+
+        expect(actual).toBe(expected);
+    });
 });
