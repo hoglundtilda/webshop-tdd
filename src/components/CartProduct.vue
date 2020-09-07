@@ -67,14 +67,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .cart_item {
-  font-weight: 500;
+  margin-bottom: 10px;
   padding: 1rem;
-  display: grid;
-  margin-bottom: 1rem;
-  justify-items: center;
-  grid-template-columns: repeat(3, 20%);
-  grid-template-rows: 150px;
+  width: 500px;
   background-color: $white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .numberof_items {
@@ -97,11 +96,6 @@ div {
 }
 
 .cartitem_information {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-  margin-left: auto;
 }
 
 .price {
@@ -131,8 +125,7 @@ div {
 }
 
 .product_image {
-  width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
 }
 
@@ -144,5 +137,19 @@ div {
   height: 30px;
   transform: scale(1.1);
   transition-duration: 200ms;
+}
+
+.shoe_information p {
+  color: $dark;
+  margin: 3px 0;
+  font-size: 0.7rem;
+}
+
+.shoe_information {
+  color: $dark;
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+
 }
 </style>

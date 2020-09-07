@@ -49,8 +49,6 @@ export default {
 @import "@/assets/scss/variables";
 .checkout {
   padding: 1rem;
-  height: auto;
-  min-width: 400px;
   background-color: $white;
 }
 
@@ -69,6 +67,10 @@ export default {
   padding: 1rem 0rem;
   border: none;
   outline: none;
+}
+
+.checkout_button:active {
+  transform: scale(1.03);
 }
 
 .total_title {
@@ -96,5 +98,9 @@ div {
   padding: 1rem 0rem;
   border: none;
   outline: none;
+}
+
+.empty_cart:active {
+  transform: scale(1.03);
 }
 </style>

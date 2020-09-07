@@ -37,9 +37,12 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .payment {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   background-image: url(../assets/img/bg-payment.png);
   background-position: bottom, left;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
 }
 
@@ -50,16 +53,20 @@ export default {
 }
 
 .footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+  margin-top: 2rem;
 }
 
 .summary_information {
-  margin-top: 2rem;
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 </style>

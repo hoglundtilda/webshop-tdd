@@ -18,7 +18,7 @@
       <p v-if="totalPrice < 1000">{{totalPriceWithDeliveryCost}}</p>
       <p v-else>{{totalPrice}}</p>
     </div>
-    <button @click="sendOrder" class="send_button">Skicka beställning</button>
+    <button @click="sendOrder" class="send_button">SKICKA BESTÄLLNING</button>
   </section>
 </template>
 
@@ -40,6 +40,7 @@ export default {
   methods: {
     ...mapActions(["emptyCart"]),
     sendOrder() {
+      this.$store.commit("generateOrderNr");
       this.$store.commit("sendOrder", false);
       setTimeout(() => {
         this.$router.push("/orderComplete");
@@ -72,10 +73,8 @@ export default {
   outline: none;
 }
 
-.send_button:hover {
+.send_button:active {
   transform: scale(1.03);
-  cursor: pointer;
-  transition-duration: 200ms;
 }
 
 div {

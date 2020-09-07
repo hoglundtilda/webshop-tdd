@@ -23,4 +23,10 @@ export default {
   resetSendingOrder(state, value) {
     state.sendingOrder = value;
   },
+  generateOrderNr(state) {
+    let letters = ["X", "Y", "Z"];
+    state.orderNumber = `AB${Date.now()}${
+      letters[Math.floor(Math.random() * letters.length)]
+    }`;
+  },
 };

@@ -4,4 +4,5 @@ export default {
   shoppingCart: [],
   cartItems: 2,
   sendingOrder: true,
+  orderNumber: "",
 };

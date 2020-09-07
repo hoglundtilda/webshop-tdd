@@ -3,9 +3,9 @@
     <Nav class="nav" />
     <div v-if="shoppingCart >= 1" class="checkout_section">
       <CartProduct />
-      <CheckOut />
+      <CheckOut class="checkout" />
     </div>
-    <Footer />
+    <Footer class="footer" />
     <EmptyCart v-if="shoppingCart < 1" class="empty_cart" />
   </section>
 </template>
@@ -37,35 +37,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.checkout_section {
+  display: flex;
+  margin: 0 10rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
 .shopping_cart {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  width: 100;
+  flex-direction: column;
+  background-image: url(../assets/img/bg-payment.png);
+  background-position: bottom, left;
   min-height: 100vh;
-  background-image: url("../assets/img/shoes-cart.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
-.checkout_section {
-  padding: 2rem;
-  display: flex;
-  margin-bottom: 20rem;
-  gap: 3rem;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.nav {
-  margin-bottom: 4rem;
-}
-
 .empty_cart {
+  height: 100vh;
+  width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
 }
 </style>
