@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import Multiselect from "vue-multiselect";
+import Multiselect from "./multiselect";
 import jsonProducts from "@/assets/products.json";
 export default {
   components: { Multiselect },
@@ -154,7 +154,6 @@ export default {
   },
 };
 </script>
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 
