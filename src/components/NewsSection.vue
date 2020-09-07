@@ -32,6 +32,12 @@ export default {};
 }
 
 .newssection_info_1 {
+  color: $color;
+  cursor: pointer;
+  animation-name: pop;
+  transform: perspective(1px) translateZ(0);
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
   font-weight: 900;
   display: flex;
   justify-content: center;
@@ -93,6 +99,15 @@ p {
   color: $white;
 }
 
+p:hover {
+  color: $color;
+  cursor: pointer;
+  animation-name: pop;
+  transform: perspective(1px) translateZ(0);
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
+}
+
 .whoweare {
   color: $dark;
   background-color: transparent;
@@ -101,10 +116,28 @@ p {
   font-weight: 900;
 }
 
+.whoweare:hover {
+  color: $white;
+  cursor: pointer;
+  animation-name: pop;
+  transform: perspective(1px) translateZ(0);
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
+}
+
 .whoweare_info {
   color: $dark;
   background-color: transparent;
   margin-bottom: 3rem;
   font-size: 1.2rem;
+}
+
+.whoweare_info:hover {
+  color: $white;
+  cursor: pointer;
+  animation-name: pop;
+  transform: perspective(1px) translateZ(0);
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
 }
 </style>

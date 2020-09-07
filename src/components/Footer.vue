@@ -3,40 +3,47 @@
     <div class="social_media">
       <h5 class="socialmedia_title">Följ oss på sociala medier</h5>
       <div class="socialmedia_icons">
-        <a href="https://www.twitter.com/" target="_" class="socialmedia_link"
-          ><img
-            class="social_img"
-            src="@/assets/img/socialmedia/socialtwitter.png"
-            alt=""
-        /></a>
-        <a href="https://www.instagram.com" target="_" class="socialmedia_link"
-          ><img
-            class="social_img"
-            src="@/assets/img/socialmedia/socialinstagram.png"
-            alt=""
-        /></a>
-        <a href="https://www.facebook.com/" target="_" class="socialmedia_link"
-          ><img
-            class="social_img"
-            src="@/assets/img/socialmedia/socialfacebook.png"
-            alt=""
-        /></a>
+        <a href="https://www.twitter.com/" target="_" class="socialmedia_link">
+          <img class="social_img" src="@/assets/img/socialmedia/socialtwitter.png" alt />
+        </a>
+        <a href="https://www.instagram.com" target="_" class="socialmedia_link">
+          <img class="social_img" src="@/assets/img/socialmedia/socialinstagram.png" alt />
+        </a>
+        <a href="https://www.facebook.com/" target="_" class="socialmedia_link">
+          <img class="social_img" src="@/assets/img/socialmedia/socialfacebook.png" alt />
+        </a>
       </div>
     </div>
     <div class="information">
       <article class="contact">
         <h3 class="info_title">HJÄLP & KONTAKT</h3>
-        <a href="#"><li>Vanliga frågor</li></a>
-        <a href="#"><li>Beställa</li></a>
-        <a href="#"><li>Betalning</li></a>
-        <a href="#"><li>Leveranstid</li></a>
+        <a href="#">
+          <li>Vanliga frågor</li>
+        </a>
+        <a href="#">
+          <li>Beställa</li>
+        </a>
+        <a href="#">
+          <li>Betalning</li>
+        </a>
+        <a href="#">
+          <li>Leveranstid</li>
+        </a>
       </article>
       <article class="shoecircus">
         <h3 class="info_title">SHOECIRCUS</h3>
-        <a href="#"><li>Vilka är vi?</li></a>
-        <a href="#"><li>Användarvillkor</li></a>
-        <a href="#"><li>Press</li></a>
-        <a href="#"><li>Vi söker medarbetare</li></a>
+        <a href="#">
+          <li>Vilka är vi?</li>
+        </a>
+        <a href="#">
+          <li>Användarvillkor</li>
+        </a>
+        <a href="#">
+          <li>Press</li>
+        </a>
+        <a href="#">
+          <li>Vi söker medarbetare</li>
+        </a>
       </article>
     </div>
   </footer>
@@ -63,7 +70,7 @@ export default {};
 
 .information {
   color: $white;
-  padding: 2rem 10rem;
+  padding: 1rem 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -71,12 +78,14 @@ export default {};
 }
 
 li {
+  font-size: 0.7rem;
   margin: 0.5rem 0;
   list-style: none;
 }
 
 .info_title {
-  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 .socialmedia_icons {
@@ -93,7 +102,7 @@ li {
 
 .socialmedia_title {
   color: $white;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 a {

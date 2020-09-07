@@ -17,7 +17,8 @@
       <div class="cartitem_information">
         <input
           class="numberof_items"
-          type="text"
+          type="number"
+          max="10"
           :value="product.qty"
           @input="updateQty($event, product)"
         />
@@ -81,6 +82,13 @@ export default {
   text-align: center;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
+}
+
 div {
   display: flex;
   flex-direction: column;
@@ -89,8 +97,10 @@ div {
 }
 
 .cartitem_information {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
   margin-left: auto;
 }
 
@@ -98,6 +108,7 @@ div {
   color: $dark !important;
   font-weight: 900;
   font-size: 1.2rem;
+  grid-column: 2;
 }
 
 .product_title {
@@ -123,10 +134,15 @@ div {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
-  border-radius: 5px;
 }
 
-.shoe_information {
+.value_icon {
+  height: 30px;
+}
+
+.value_icon:hover {
+  height: 30px;
+  transform: scale(1.1);
+  transition-duration: 200ms;
 }
 </style>

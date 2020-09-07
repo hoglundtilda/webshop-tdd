@@ -44,7 +44,7 @@ export default {
     showShoe(index) {
       let shoe = this.products[index];
       this.$router
-        .push("/shoeinfo/" + shoe.id)
+        .push("/shoeinfo/" + shoe.productinfo.Artikelnummer)
         .then(() => window.scrollTo(0, 0));
     },
     hasFilter(filter) {

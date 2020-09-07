@@ -18,10 +18,9 @@
       <select id="group_price" class="price" v-model="price">
         <option hidden selected value="Price">Price</option>
         <option value="700-899">700-899</option>
-        <option value="900-1099">900-1099</option>
-        <option value="1100-1299">1100-1299</option>
-        <option value="1300-1499">1300-1499</option>
-        <option value="1500-10000">1500+</option>
+        <option value="900-1199">900-1199</option>
+        <option value="1200-1699">1200-1699</option>
+        <option value="1700-10000">1700+</option>
       </select>
       <div class="searchfieled">
         <input
@@ -32,7 +31,8 @@
           @keyup.enter="setFilter"
         />
       </div>
-      <button class="filter_button" @click="setFilter">Filtrera</button>
+      <button class="button filter" @click="setFilter">Filtrera</button>
+      <button class="button reset" @click="resetFilter">Reset</button>
     </section>
   </div>
 </template>
@@ -77,7 +77,7 @@ export default {
       if (this.hasPriceFilter === false && this.hasFilter === false) {
         this.hasFilter = false;
         this.products = jsonProducts.products;
-      } else {
+      } else if (this.hasPriceFilter === true) {
         this.hasFilter = true;
         this.filteredProducts = this.filteredProducts.filter((product) => {
           if (
@@ -94,7 +94,7 @@ export default {
       if (this.hasInputFilter === false && this.hasFilter === false) {
         this.hasFilter = false;
         this.products = jsonProducts.products;
-      } else {
+      } else if (this.hasInputFilter === true) {
         this.hasFilter = true;
         this.filteredProducts = this.filteredProducts.filter((product) => {
           const str = product.brand.toLowerCase();
@@ -129,6 +129,13 @@ export default {
       }
       //Starta action i store
       this.filterBySize();
+    },
+    resetFilter() {
+      this.input = "";
+      this.price = "Price";
+      this.size = "Size";
+      this.hasFilter = false;
+      this.setFilter();
     },
   },
 };
