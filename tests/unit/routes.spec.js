@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import App from '@/App.vue';
 import routes from '@/router/routes.js';
-import ShoeInfo from '@/views/ShoeInfo.vue';
 import Home from '@/views/Home.vue';
 import Cart from '@/views/Cart.vue';
 
@@ -19,7 +18,7 @@ describe('App.vue', () => {
   beforeEach(() => {
     router = new VueRouter({ routes });
     store = new Vuex.Store({
-      state: { cartItems: 1 },
+      state: { shoppingCart: ['1', '2', '3'] },
     });
   });
 
@@ -38,19 +37,8 @@ describe('App.vue', () => {
   });
 
   // SHOEINFO
-  it('Renders ShoeInfo view via routing', async () => {
-    const wrapper = mount(App, {
-      localVue,
-      router,
-      store,
-    });
-
-    router.push('/shoeinfo/:shoe');
-
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.findComponent(ShoeInfo).exists()).toBe(true);
-  });
+  // Renders ShoeInfo view via routing
+  // Testas i ShoeInfo när den mountas
 
   // CART
   it('Renders Cart view via routing', async () => {

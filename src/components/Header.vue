@@ -7,9 +7,9 @@
       </div>
       <section class="call_to_action">
         <div>
-          <h1>Nya märken</h1>
-          <span>Höst 2020</span>
-          <button>Kollektion</button>
+          <h1>HÖST REA</h1>
+          <span>Upp till 30%</span>
+          <button @click="goToRea">Till Erbjudanden</button>
         </div>
       </section>
     </section>
@@ -20,6 +20,11 @@
 import Nav from "./Nav";
 export default {
   components: { Nav },
+  methods: {
+    goToRea() {
+      document.querySelector(".headline_rea").scrollIntoView();
+    },
+  },
 };
 </script>
 

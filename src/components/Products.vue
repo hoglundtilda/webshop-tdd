@@ -24,9 +24,14 @@
         </li>
       </ul>
     </div>
-    <h1 class="headline_rea">Reaprodukter</h1>
+    <h1 ref="rea" class="headline_rea">Reaprodukter</h1>
     <ul class="productUl">
-      <li v-for="(sales, index) in sale" :key="index" class="product" @click="showShoe(sales.id)">
+      <li
+        v-for="(sales, index) in sale"
+        :key="index"
+        class="product_sale"
+        @click="showShoe(sales.id)"
+      >
         <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
         <div class="info">
           <span class="salePercent">{{sales.percent}}</span>
@@ -109,7 +114,8 @@ export default {
   text-decoration: line-through;
 }
 
-.product {
+.product,
+.product_sale {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
