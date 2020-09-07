@@ -6,14 +6,34 @@
       <li
         v-for="(product, index) in renderProducts"
         :key="index"
-        @click="showShoe(index)"
+        @click="showShoe(product.id)"
         class="product"
       >
         <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
+
         <div class="info">
-          <p class="productPrice">{{ product.price }} kr</p>
+          <span class="salePercent">{{product.percent}}</span>
+          <p class="productPrice">
+            {{ product.price }} kr
+            <span class="salePrice">{{product.sale }}</span>
+          </p>
           <p class="productBrand">{{ product.brand }}</p>
           <p class="productModel">{{ product.name }}</p>
+        </div>
+      </li>
+    </ul>
+    <h1>Reaprodukter</h1>
+    <ul class="productUl">
+      <li v-for="(sales, index) in sale" :key="index" class="product" @click="showShoe(sales.id)">
+        <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
+        <div class="info">
+          <span class="salePercent">{{sales.percent}}</span>
+          <p class="productPrice salePrice">
+            {{sales.sale}}
+            <span class="oldPrice">{{sales.price}} kr</span>
+          </p>
+          <p class="productBrand">{{sales.brand}}</p>
+          <p class="productModel">{{sales.name}}</p>
         </div>
       </li>
     </ul>
@@ -39,10 +59,14 @@ export default {
         return json.products;
       }
     },
+    sale() {
+      const sale = this.products.filter((shoe) => shoe.sale);
+      return sale;
+    },
   },
   methods: {
-    showShoe(index) {
-      let shoe = this.products[index];
+    showShoe(id) {
+      let shoe = this.products.find((product) => product.id === id);
       this.$router
         .push("/shoeinfo/" + shoe.productinfo.Artikelnummer)
         .then(() => window.scrollTo(0, 0));
@@ -74,7 +98,7 @@ export default {
   margin: 2rem;
   height: 25rem;
   box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .shoeImg {
@@ -87,6 +111,9 @@ export default {
 .productModel {
   padding: 0.2rem 1rem;
   margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .info {
   display: flex;
@@ -102,5 +129,22 @@ export default {
 }
 .productPrice {
   font-weight: 900;
+}
+.salePercent {
+  color: $red;
+  width: 4rem;
+
+  position: absolute;
+  margin-top: -3rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.salePrice {
+  color: $red;
+}
+.oldPrice {
+  color: black;
+  text-decoration: line-through;
 }
 </style>
