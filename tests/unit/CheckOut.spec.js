@@ -2,14 +2,13 @@ import getters from "@/store/modules/getters.js";
 import actions from "@/store/modules/actions.js";
 import mutations from "@/store/modules/mutations.js";
 import CheckOut from "@/components/CheckOut";
-import Payment from "@/views/Payment";
 import { mount, shallowMount, createLocalVue } from "@vue/test-utils";
 import routes from "@/router/routes.js";
 import VueRouter from "vue-router";
-import { sync } from "vuex-router-sync";
+
 import Vuex from "vuex";
 import store from "@/store/index.js";
-import App from "@/App";
+
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
@@ -18,12 +17,8 @@ localVue.use(Vuex);
 const router = new VueRouter({ routes });
 
 describe("CheckOut", () => {
-  let shoppingCart, product, getters;
+  let shoppingCart, product;
   beforeEach(() => {
-    getters = {
-      totalPrice: () => 3985,
-      totalPriceWithDeliveryCost: () => 4200,
-    };
     product = {
       id: "0004",
       brand: "Iceberg",
@@ -55,36 +50,6 @@ describe("CheckOut", () => {
       totalPrice: 4495,
     };
     shoppingCart = [
-      {
-        id: "0014",
-        brand: "DKNY",
-        name: "BREA",
-        type: "Slip-ins",
-        price: "889,00",
-        color: "Red",
-        material: {
-          Yttermaterial: "Konstmaterial/textil",
-          Foder: "Textil",
-          Innersula: "Textil",
-          Sula: "Konstmaterial",
-          Fodertjocklek: "Tunt foder",
-        },
-        productinfo: {
-          Tå: "Rund",
-          "Klack/sula": "Platt",
-          Förslutning: "Elastisk snörning",
-          Mönster: "Enfärgat",
-          Artikelnummer: "DK111A06H-G11",
-        },
-        sizes: "36",
-        images: [
-          "dkny_3/image_14.png",
-          "dkny_3/image_15.png",
-          "dkny_3/image_16.png",
-        ],
-        qty: 1,
-        totalPrice: 889,
-      },
       {
         id: "0019",
         brand: "Jordan",
@@ -181,7 +146,7 @@ describe("CheckOut", () => {
     const state = {
       shoppingCart,
     };
-    const expectedValue = 3985;
+    const expectedValue = 3923;
     const result = getters.totalPrice(state);
     expect(result).toBe(expectedValue);
   });
@@ -189,40 +154,10 @@ describe("CheckOut", () => {
     const state = {
       shoppingCart,
     };
-    const expectedValue = 4200;
+    const expectedValue = 3992;
     const result = getters.totalPriceWithDeliveryCost(state);
     expect(result).toBe(expectedValue);
   });
-  test("Should test emptyCart action to be dispatched with correct params", async () => {
-    const commit = jest.fn();
-    const ctx = { commit };
-    await actions.emptyCart(ctx);
-    expect(commit).toHaveBeenCalledWith("emptyCart");
-  });
-  test("Should test emptyCart mutation to remove all the products from the shoppingCart", () => {
-    const state = {
-      shoppingCart,
-    };
-    mutations.emptyCart(state);
-    expect(state.shoppingCart).toStrictEqual([]);
-  });
-
-  it("renders a child component via routing", async () => {
-    const wrapper = mount(CheckOut, {
-      localVue,
-      store,
-      router,
-    });
-
-    const spy = jest.spyOn(router, "push");
-    const route = "/Payment";
-
-    await wrapper.find(".checkout_button").trigger("click");
-    await wrapper.vm.$nextTick();
-
-    expect(spy).toHaveBeenCalledWith(route);
-  });
-
   test("Should test emptyCart dispatch when clicking the remove button", async () => {
     const shoppingCart = [product];
     const mockStore = {
@@ -240,5 +175,34 @@ describe("CheckOut", () => {
     });
     await wrapper.find(".empty_cart").trigger("click");
     expect(mockStore.dispatch).toHaveBeenCalledWith("emptyCart");
+  });
+  test("Should test emptyCart action to be dispatched with correct params", async () => {
+    const commit = jest.fn();
+    const ctx = { commit };
+    await actions.emptyCart(ctx);
+    expect(commit).toHaveBeenCalledWith("emptyCart");
+  });
+  test("Should test emptyCart mutation to remove all the products from the shoppingCart", () => {
+    const state = {
+      shoppingCart,
+    };
+    mutations.emptyCart(state);
+    expect(state.shoppingCart).toStrictEqual([]);
+  });
+
+  it("Should click the to payment button and check to the route is pushing to /Payment", async () => {
+    const wrapper = mount(CheckOut, {
+      localVue,
+      store,
+      router,
+    });
+
+    const spy = jest.spyOn(router, "push");
+    const route = "/Payment";
+
+    await wrapper.find(".checkout_button").trigger("click");
+    await wrapper.vm.$nextTick();
+
+    expect(spy).toHaveBeenCalledWith(route);
   });
 });
