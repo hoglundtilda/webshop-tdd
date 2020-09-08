@@ -1,7 +1,10 @@
 export default {
   addToCart(state, shoe) {
-    shoe.totalPrice = parseInt(shoe.price) * parseInt(shoe.qty);
-
+    if (shoe.sale) {
+      shoe.totalPrice = parseInt(shoe.sale) * parseInt(shoe.qty);
+    } else {
+      shoe.totalPrice = parseInt(shoe.price) * parseInt(shoe.qty);
+    }
     state.shoppingCart.push(shoe);
   },
   removeFromCart(state, product) {
@@ -12,7 +15,11 @@ export default {
     let value = product.value;
     let cartItem = product.product;
     cartItem.qty = parseInt(value);
-    cartItem.totalPrice = parseInt(cartItem.price) * parseInt(cartItem.qty);
+    if (cartItem.sale) {
+      cartItem.totalPrice = parseInt(cartItem.sale) * parseInt(cartItem.qty);
+    } else {
+      cartItem.totalPrice = parseInt(cartItem.price) * parseInt(cartItem.qty);
+    }
   },
   emptyCart(state) {
     state.shoppingCart = [];
@@ -24,7 +31,7 @@ export default {
     state.sendingOrder = value;
   },
   generateOrderNr(state) {
-    let letters = ["X", "Y", "Z"];
+    let letters = ['X', 'Y', 'Z'];
     state.orderNumber = `AB${Date.now()}${
       letters[Math.floor(Math.random() * letters.length)]
     }`;

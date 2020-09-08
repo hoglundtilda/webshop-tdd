@@ -29,10 +29,15 @@
 
       <section class="product">
         <h1>{{ shoe.brand }} - {{ shoe.name }}</h1>
-        <h3>
+        <h3 v-if="hasSale" class="onSale">
+          {{ shoe.sale }} kr
+          <span class="moms">inkl moms</span>
+        </h3>
+        <h3 v-if="hasSale == false">
           {{ shoe.price }} kr
           <span class="moms">inkl moms</span>
         </h3>
+
         <h5>Färg: {{ shoe.color }}</h5>
         <select name="sizes" class="sizes" v-model="selectedOption" @change="checkInStock($event)">
           <option disabled hidden value class="options">VÄLJ STORLEK</option>
@@ -97,12 +102,10 @@ export default {
       selectedOption: "",
       img: "",
       OutOfStockMessage: false,
+      hasSale: false,
     };
   },
   computed: {
-    size() {
-      return this.selectedOption.size;
-    },
     stock() {
       return this.selectedOption.stock;
     },
@@ -111,6 +114,9 @@ export default {
         (shoe) => shoe.productinfo.Artikelnummer == this.$route.params.shoe
       )[0];
       this.img = shoe.images[0];
+      if (shoe.sale) {
+        this.hasSale = true;
+      }
       return shoe;
     },
     image() {
@@ -125,6 +131,10 @@ export default {
     },
     shoeToCart() {
       return { ...this.shoe, sizes: this.selectedOption.size, qty: 1 };
+    },
+    sale() {
+      const sale = this.products.filter((shoe) => shoe.sale);
+      return sale;
     },
   },
 
@@ -184,15 +194,17 @@ export default {
   width: 10rem;
   height: 13rem;
   margin-right: 2rem;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  box-shadow: 3px 10px 17px 1px rgba(136, 136, 136, 0.329);
   border-radius: 5px;
 }
 .bigImg {
   height: 80vh;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
+  box-shadow: 3px 10px 17px 1px rgba(136, 136, 136, 0.329);
   border-radius: 5px;
 }
-
+.onSale {
+  color: $red;
+}
 .moms {
   font-size: 0.6rem;
   color: grey;
