@@ -29,7 +29,7 @@
 
       <section class="product">
         <h1>{{ shoe.brand }} - {{ shoe.name }}</h1>
-        <h3 v-if="hasSale">
+        <h3 v-if="hasSale" class="onSale">
           {{ shoe.sale }} kr
           <span class="moms">inkl moms</span>
         </h3>
@@ -202,7 +202,9 @@ export default {
   box-shadow: 3px 10px 17px 1px rgba(136, 136, 136, 0.329);
   border-radius: 5px;
 }
-
+.onSale {
+  color: $red;
+}
 .moms {
   font-size: 0.6rem;
   color: grey;
