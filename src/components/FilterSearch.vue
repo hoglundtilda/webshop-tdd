@@ -18,15 +18,18 @@
       <select id="group_price" class="price" v-model="price">
         <option hidden selected value="Price">Price</option>
         <option value="700-899">700-899</option>
-        <option value="900-1099">900-1099</option>
-        <option value="1100-1299">1100-1299</option>
-        <option value="1300-1499">1300-1499</option>
-        <option value="1500-10000">1500+</option>
+        <option value="900-1199">900-1199</option>
+        <option value="1200-1699">1200-1699</option>
+        <option value="1700-10000">1700+</option>
       </select>
-      <div class="searchfieled">
-        <input type="text" class="input" v-model="input" />
-        <i class="fas fa-search"></i>
-      </div>
+      <Multiselect
+        v-model="selectedBrand"
+        :options="options"
+        :multiple="true"
+        placeholder="Select Brands"
+        :close-on-select="false"
+        class="multiselect-brand"
+      ></Multiselect>
       <button class="button filter" @click="setFilter">Filtrera</button>
       <button class="button reset" @click="resetFilter">Reset</button>
     </section>
@@ -34,17 +37,29 @@
 </template>
 
 <script>
+import Multiselect from "./multiselect";
 import jsonProducts from "@/assets/products.json";
 export default {
+  components: { Multiselect },
   data: () => {
     return {
       size: "Size",
       price: "Price",
-      input: "",
       minPrice: "",
       maxPrice: "",
+      options: [
+        "ADIDAS",
+        "DKNY",
+        "FILA",
+        "ICEBERG",
+        "JORDAN",
+        "NIKE",
+        "STEVE MADDEN",
+        "VANS",
+      ],
+      selectedBrand: [],
       hasSizeFilter: false,
-      hasInputFilter: false,
+      hasBrandFilter: false,
       hasPriceFilter: false,
       hasFilter: false,
       products: jsonProducts.products,
@@ -84,17 +99,21 @@ export default {
           }
         });
       }
-      this.filterByInput();
+      this.filterByBrand();
     },
-    filterByInput() {
-      if (this.hasInputFilter === false && this.hasFilter === false) {
+    filterByBrand() {
+      if (this.hasBrandFilter === false && this.hasFilter === false) {
         this.hasFilter = false;
         this.products = jsonProducts.products;
-      } else if (this.hasInputFilter === true) {
+      } else if (this.hasBrandFilter === true) {
         this.hasFilter = true;
         this.filteredProducts = this.filteredProducts.filter((product) => {
-          const str = product.brand.toLowerCase();
-          return str.includes(this.input);
+          for (let i = 0; i < this.selectedBrand.length; i++) {
+            let brand = this.selectedBrand[i].toLowerCase();
+            if (product.brand.toLowerCase().includes(brand)) {
+              return product;
+            }
+          }
         });
       }
       this.$emit("hasFilter", this.hasFilter);
@@ -118,16 +137,15 @@ export default {
       }
 
       // INPUT
-      if (this.input === "") {
-        this.hasInputFilter = false;
+      if (this.selectedBrand.length === 0) {
+        this.hasBrandFilter = false;
       } else {
-        this.hasInputFilter = true;
+        this.hasBrandFilter = true;
       }
-      //Starta action i store
       this.filterBySize();
     },
     resetFilter() {
-      this.input = "";
+      this.selectedBrand = [];
       this.price = "Price";
       this.size = "Size";
       this.hasFilter = false;
@@ -136,9 +154,9 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
+
 body {
   font-family: $font;
 }
@@ -150,7 +168,7 @@ body {
   height: 4em;
 
   .filters {
-    width: 40%;
+    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
@@ -171,6 +189,20 @@ body {
       align-items: center;
       margin: 0 2em;
     }
+
+    .multiselect-brand {
+      width: 25em;
+      background: none;
+      border: 0.75px solid $dark;
+      border-radius: 2px;
+      font-size: 0.9em;
+      color: $dark;
+      padding: 0;
+    }
+
+    .multiselect-brand:hover {
+      background: none;
+    }
     .input {
       outline: none;
       border: none;
@@ -179,14 +211,6 @@ body {
       padding-top: 0.7em;
       font-size: 0.8em;
       font-family: $font;
-    }
-
-    .fa-search {
-      position: absolute;
-      padding-left: -1em;
-      font-size: 1.2em;
-      color: $dark;
-      right: 0;
     }
 
     button {

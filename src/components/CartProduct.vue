@@ -17,7 +17,8 @@
       <div class="cartitem_information">
         <input
           class="numberof_items"
-          type="text"
+          type="number"
+          max="10"
           :value="product.qty"
           @input="updateQty($event, product)"
         />
@@ -66,19 +67,25 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";
 .cart_item {
-  font-weight: 500;
+  margin-bottom: 10px;
   padding: 1rem;
-  display: grid;
-  margin-bottom: 1rem;
-  justify-items: center;
-  grid-template-columns: repeat(3, 20%);
-  grid-template-rows: 150px;
+  width: 500px;
   background-color: $white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .numberof_items {
   width: 2.5rem;
   text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
 }
 
 div {
@@ -89,15 +96,13 @@ div {
 }
 
 .cartitem_information {
-  display: flex;
-  justify-content: space-between;
-  margin-left: auto;
 }
 
 .price {
   color: $dark !important;
   font-weight: 900;
   font-size: 1.2rem;
+  grid-column: 2;
 }
 
 .product_title {
@@ -120,13 +125,31 @@ div {
 }
 
 .product_image {
-  width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
-  box-shadow: 3px 13px 17px 1px rgba(136, 136, 136, 0.75);
-  border-radius: 5px;
+}
+
+.value_icon {
+  height: 30px;
+}
+
+.value_icon:hover {
+  height: 30px;
+  transform: scale(1.1);
+  transition-duration: 200ms;
+}
+
+.shoe_information p {
+  color: $dark;
+  margin: 3px 0;
+  font-size: 0.7rem;
 }
 
 .shoe_information {
+  color: $dark;
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+
 }
 </style>

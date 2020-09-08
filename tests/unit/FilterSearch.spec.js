@@ -5,7 +5,7 @@ import jsonProducts from '@/assets/products.json';
 
 // Tester rörande filtrerings komponenten
 //1. Inputfält och select-options ska ha särskilt värde vid rendering
-//2. När användaren filtrerar efter input ska skorna filtreras efter märke
+//2. När användaren väljer options bland märken ska bara märken som är selected visas
 //3. När användaren väljer en storlek i options ska bara skor med den storleken i lager visas
 //4. När användaren väljer ett prisintervall i options ska skor som matchar priset visas
 //5. När användaren väljer flera filter ska skor som matchar dessa visas
@@ -20,33 +20,29 @@ describe('FilterSearch.vue', () => {
   it('should have certain values when rendered', () => {
     const filter = wrapper.findComponent(FilterSearch);
 
-    let inputField = filter.find('.input').element.value,
-      sizeSelect = filter.find('.size').findAll('option'),
+    let sizeSelect = filter.find('.size').findAll('option'),
       priceSelect = filter.find('.price').findAll('option');
 
     sizeSelect = sizeSelect.at(0).attributes('value');
     priceSelect = priceSelect.at(0).attributes('value');
 
-    expect(inputField).toStrictEqual('');
     expect(sizeSelect).toBe('Size');
     expect(priceSelect).toBe('Price');
   });
 
   // INPUT FILTER
-  it('Should only display products of a certain brand when user enters a brand in input', async () => {
+  it('Should only display products of a certain brand when user selects brand in multiselect', async () => {
     const filter = wrapper.findComponent(FilterSearch),
-      input = filter.find('.input'),
       filterBtn = filter.find('.filter'),
       products = jsonProducts.products,
       expected = products.filter((product) => {
         const str = product.brand.toLowerCase();
-        return str.includes('dkny');
+        return str.includes('vans');
       });
 
-    await input.setValue('vans');
+    filter.setData({ selectedBrand: ['VANS'] });
     await filterBtn.trigger('click');
-
-    const productsArray = wrapper.findAll('li'),
+    const productsArray = wrapper.findAll('.product'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected.length);
@@ -69,7 +65,7 @@ describe('FilterSearch.vue', () => {
 
     await sizeSelect.at(1).setSelected();
     await filterBtn.trigger('click');
-    const productsArray = wrapper.findAll('li'),
+    const productsArray = wrapper.findAll('.product'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected.length);
@@ -89,7 +85,7 @@ describe('FilterSearch.vue', () => {
 
     await priceSelect.at(1).setSelected();
     await filterBtn.trigger('click');
-    const productsArray = wrapper.findAll('li'),
+    const productsArray = wrapper.findAll('.product'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected.length);
@@ -104,13 +100,13 @@ describe('FilterSearch.vue', () => {
       expected = 1;
 
     // We know there is only one shoe of this kind and since above filters
-    // are working atm i dont need to test similar functions again.
-    await input.setValue('vans');
+    // are working we dont need to test similar functions again.
+    filter.setData({ selectedBrand: ['VANS'] });
     await priceSelect.at(0).setSelected();
     await sizeSelect.at(0).setSelected();
     await filterBtn.trigger('click');
 
-    const productsArray = wrapper.findAll('li'),
+    const productsArray = wrapper.findAll('.product'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected);
@@ -120,20 +116,19 @@ describe('FilterSearch.vue', () => {
     const filter = wrapper.findComponent(FilterSearch),
       priceSelect = filter.find('.price').findAll('option'),
       sizeSelect = filter.find('.size').findAll('option'),
-      input = filter.find('.input'),
       filterBtn = filter.find('.filter'),
       resetBtn = filter.find('.reset'),
       expected = jsonProducts.products.length;
 
     // since previous test is working no need to check if array
     // is updated in this test, we are using the same filters.
-    await input.setValue('vans');
+    filter.setData({ selectedBrand: ['vans'] });
     await priceSelect.at(0).setSelected();
     await sizeSelect.at(0).setSelected();
     await filterBtn.trigger('click');
     await resetBtn.trigger('click');
 
-    const productsArray = wrapper.findAll('li'),
+    const productsArray = wrapper.findAll('.product'),
       actual = productsArray.length;
 
     expect(actual).toBe(expected);

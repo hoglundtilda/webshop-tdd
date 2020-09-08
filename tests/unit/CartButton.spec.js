@@ -2,14 +2,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Nav from '@/components/Nav.vue';
 import CartButton from '@/components/CartButton.vue';
 import Vuex from 'vuex';
-
-const localVue = createLocalVue().use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-    cartItems: 1,
-  },
-});
+import Vue from 'vue';
 
 it('should display Cart component when rendered', () => {
   const wrapper = shallowMount(Nav),
@@ -18,11 +11,22 @@ it('should display Cart component when rendered', () => {
   expect(cart.exists()).toBe(true);
 });
 
-it('should display the value from store in CartButton component', () => {
-  const wrapper = shallowMount(CartButton, {
-    store,
-    localVue,
-  });
+it('should display correct amount of products from store.state', async () => {
+  const localVue = createLocalVue().use(Vuex);
+  Vue.use(Vuex);
 
-  expect(wrapper.find('span').text()).toBe('1');
+  const state = { shoppingCart: ['1', '2', '3'] },
+    store = new Vuex.Store({
+      state,
+    }),
+    wrapper = shallowMount(CartButton, {
+      store,
+      localVue,
+    }),
+    expected = state.shoppingCart.length;
+
+  let numberOfCartItems = wrapper.find('span');
+  numberOfCartItems = parseInt(numberOfCartItems.text());
+
+  expect(numberOfCartItems).toBe(expected);
 });
