@@ -11,7 +11,7 @@ describe("ShoppingCart", () => {
         },
       },
     });
-  });
+  }); 
   test("Check if the component exists", () => {
     let expected = true;
     const shoppingCart = wrapper.findComponent(ShoppingCart);
