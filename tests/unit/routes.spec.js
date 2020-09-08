@@ -5,6 +5,7 @@ import App from '@/App.vue';
 import routes from '@/router/routes.js';
 import Home from '@/views/Home.vue';
 import Cart from '@/views/Cart.vue';
+import OrderComplete from '@/views/OrderComplete.vue';
 
 // TESTA ATT RÄTT VIEWS RENDERAS FÖR ROUTER LINKS
 
@@ -55,3 +56,5 @@ describe('App.vue', () => {
     expect(wrapper.findComponent(Cart).exists()).toBe(true);
   });
 });
+
+// SKRIV test för OrderComplete route

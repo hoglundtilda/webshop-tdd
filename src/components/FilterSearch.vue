@@ -107,7 +107,7 @@ export default {
         this.products = jsonProducts.products;
       } else if (this.hasBrandFilter === true) {
         this.hasFilter = true;
-        this.filteredProducts = this.products.filter((product) => {
+        this.filteredProducts = this.filteredProducts.filter((product) => {
           for (let i = 0; i < this.selectedBrand.length; i++) {
             let brand = this.selectedBrand[i].toLowerCase();
             if (product.brand.toLowerCase().includes(brand)) {
