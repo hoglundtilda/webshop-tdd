@@ -41,6 +41,7 @@ export default {
     ...mapActions(["emptyCart"]),
     sendOrder() {
       this.$store.commit("sendOrder", false);
+      this.$store.commit("generateOrderNr");
       setTimeout(() => {
         this.$router.push("/orderComplete");
       }, 2000);
