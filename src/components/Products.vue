@@ -9,18 +9,12 @@
           @click="showShoe(product.id)"
           class="product"
         >
-          <img
-            :src="require(`../assets/img/${product.images[0]}`)"
-            alt
-            class="shoeImg"
-          />
+          <img :src="require(`../assets/img/${product.images[0]}`)" alt class="shoeImg" />
 
           <div class="info">
             <span class="salePercent">{{ product.percent }}</span>
             <div class="productPrice">
-              <p :class="[{ lineThru: product.sale }]">
-                {{ product.price }} kr
-              </p>
+              <p :class="[{ lineThru: product.sale }]">{{ product.price }} kr</p>
 
               <p v-if="product.sale" class="salePrice">{{ product.sale }} kr</p>
             </div>
@@ -39,11 +33,7 @@
         class="product_sale"
         @click="showShoe(sales.id)"
       >
-        <img
-          :src="require(`../assets/img/${sales.images[0]}`)"
-          alt
-          class="shoeImg"
-        />
+        <img :src="require(`../assets/img/${sales.images[0]}`)" alt class="shoeImg" />
         <div class="info">
           <span class="salePercent">{{ sales.percent }}</span>
           <p class="productPrice salePrice">
@@ -118,7 +108,7 @@ export default {
   flex-wrap: wrap;
   margin: 2rem 5rem;
 
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .lineThru {
