@@ -40,11 +40,9 @@ export default {
   methods: {
     ...mapActions(["emptyCart"]),
     sendOrder() {
-      const route = this.$router.push("/orderComplete");
-      this.$store.commit("generateOrderNr");
       this.$store.commit("sendOrder", false);
-      setTimeout((route) => {
-        route;
+      setTimeout(() => {
+        this.$router.push("/orderComplete");
       }, 2000);
       this.$store.dispatch("emptyCart");
     },
