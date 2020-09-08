@@ -1,3 +1,4 @@
+
 import { mount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
@@ -6,6 +7,7 @@ import routes from "@/router/routes.js";
 import Home from "@/views/Home.vue";
 import Cart from "@/views/Cart.vue";
 import CartProduct from "@/components/CartProduct";
+
 
 // TESTA ATT RÄTT VIEWS RENDERAS FÖR ROUTER LINKS
 
@@ -203,3 +205,5 @@ describe("App.vue", () => {
     expect(wrapper.findComponent(Cart).exists()).toBe(true);
   });
 });
+
+// SKRIV test för OrderComplete route
