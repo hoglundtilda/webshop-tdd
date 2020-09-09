@@ -54,10 +54,7 @@
           :disabled="selectedOption.stock <= 0"
           :class="selectedOption.stock <= 0 || selectedOption.stock == 0 ? 'buttonDisabled': 'addToCart'"
         >LÄGG I VARUKORGEN</button>
-        <p
-          v-if="this.OutOfStockMessage"
-          class="outOfStockMessage"
-        >Ej i lager, försök en annan gång din påse</p>
+        <p v-if="this.OutOfStockMessage" class="outOfStockMessage">Ej i lager, åter 15/9</p>
         <section class="goodToKnow">
           <div class="material">
             <h4>Material & skötsel</h4>

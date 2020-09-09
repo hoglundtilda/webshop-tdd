@@ -125,6 +125,7 @@ export default {
   height: 25rem;
   box-shadow: 3px 10px 17px 1px rgba(136, 136, 136, 0.329);
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .shoeImg {
