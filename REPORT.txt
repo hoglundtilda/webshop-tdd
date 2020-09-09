@@ -13,7 +13,6 @@ Kravspec:
 
 Kundkrav
 Skall kunna filtrera bland produkterna för att enklare hitta det som passar mig.
-Skall kunna söka efter produkter
 Skall kunna få reda på mer detaljerad information om produkten.
 Skall se om varan finns i lager för omgående leverans.
 Skall kunna se priset på varan direkt utan att behöva klicka in på produkten.
@@ -34,7 +33,25 @@ Skall vara stilren
 Skall vara sportig
 
 Retrospective:
-FUCK YEAH
+Vad har vi lärt oss:
+Bättre förståelse för hur man använder tester, särskilt hur man ska tänka kring att testa store. Att det betyder mycket att ha samma ambitionsnivå och jobba mot ett tydligt gemensamt mål.
 
+Hur fördelade vi arbetet:
+Figma-skiss och krav gjorde vi tillsammans. Vi grupperade stories som hörde ihop till de komponenter vi tänkte ha och sedan valde vi efter eget behag det som vi ville göra, men med hänsyn till att det skulle vara likvärdigt fördelat över hur mycket logik som varje kort innehöll. Vi arbetade mycket efter hur det såg ut i trello. Vi blev klara med grundkraven i god tid och då fanns det tid över till att utveckla det man själv kände för. Exempelvis snygga till css, lägg till en view efter att man tryckt på betalning i cart, ändra filtrering till något som är mer användarvänligt som checkboxes.
 
+Vad skulle vi börja göra?:
+Vi skulle lägga till delmål och tidsplan
+Vi skulle börja göra skiss över sidan ännu mer noggrannt, exempelvis speca upp vilka funktioner som vi kommer behöva kopplat till komponenter.
 
+Vad skulle vi sluta göra?:
+Ett par tester skrevs i efterhand eftersom vi inte förstod hur vi skulle testa actions/mutations, det kommer vi inte göra nästa gång. Ni har vi lärt oss att testa store.
+
+Vad skulle vi fortsätta göra?:
+Vi la hela måndagen (första dagen) på att planera vad för sida vi ville göra, figma-skiss, kravspec och stories. Att vi hade gjort detta ordentligt ledde till ett gemensamt mål vilket varit ett stort plus för samarbetet. Att inte börja dela upp arbetet direkt utan istället göra grundarbetet ordentligt kommer vi ta med oss till nästa grupparbete.
+
+Vilka krav var lättast resp svårast att skriva tester för?:
+Att testa att komponenter renderas och därmed visas för användaren var enklast.
+Testerna för actions/mutations var svårast och var kopplade till att antal produkter i cart stämde, att man kunde se totalpris och ändra antalet produkter samt tömma varukorgen.
+
+Fanns det något ni hade tänkt göra, som ni inte hann med? Vad berodde det på?:
+Vi hann med allt och lite extra. Det berodde på bra samarbete
